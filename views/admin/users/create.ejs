@@ -1,0 +1,76 @@
+<div id="admin-content">
+  <div class="container">
+    <!-- Top Administrative Navigation Header Row -->
+    <header class="form-header-top-row">
+      <div class="title-wrap">
+        <h1 class="admin-heading">
+          <i class="fa-solid fa-user-plus"></i> Add User
+        </h1>
+        <p class="form-subtext">Provision new cryptographic credentials and assign security clearance roles to system operators.</p>
+      </div>
+      <a href="/admin/users" class="back-to-index-btn"><i class="fa-solid fa-arrow-left"></i> Back to Directory</a>
+    </header>
+
+    <!-- PREMIUM INTERACTIVE AUTHENTICATION CARD CREATOR -->
+    <div class="form-card-container">
+      <div class="form-body">
+        <form action="/admin/add-user" method="POST" autocomplete="off" class="premium-admin-form">
+          
+          <!-- PRIMARY IDENTITY FIELDS BLOCK -->
+          <div class="form-dual-fields-grid">
+            <!-- FULL NAME (Floating Label System) -->
+            <div class="form-group-floating">
+              <input type="text" name="fullname" id="fullname" required placeholder=" ">
+              <label for="fullname">Full Name</label>
+              <span class="focus-line-slide"></span>
+            </div>
+
+            <!-- USERNAME (Floating Label System) -->
+            <div class="form-group-floating">
+              <input type="text" name="username" id="username" required placeholder=" ">
+              <label for="username">Username</label>
+              <span class="focus-line-slide"></span>
+            </div>
+
+            <!-- EMAIL ADDRESS (Floating Label System) -->
+            <div class="form-group-floating">
+              <input type="email" name="email" id="email" required placeholder=" ">
+              <label for="email">Email Address</label>
+              <span class="focus-line-slide"></span>
+            </div>
+          </div>
+
+          <!-- SECURITY CONFIG STRIPS -->
+          <div class="form-dual-fields-grid">
+            <!-- PASSWORD (Floating Label System) -->
+            <div class="form-group-floating">
+              <input type="password" name="password" id="password" required placeholder=" ">
+              <label for="password">Security Password</label>
+              <span class="focus-line-slide"></span>
+            </div>
+
+            <!-- USER ROLE SELECTOR (Static Alignment Component) -->
+            <div class="form-group-standard">
+              <label class="static-field-label" for="user_role">Security Role Assignment</label>
+              <div class="custom-select-wrapper">
+                <select name="role" id="user_role" required>
+                  <option value="author" selected>Author / Contributor</option>
+                  <option value="admin">System Administrator</option>
+                </select>
+                <i class="fa-solid fa-chevron-down custom-select-arrow"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- SYSTEM INTERACTION EXECUTIVE SUBMIT TRIGGER -->
+          <div class="form-action-footer-row">
+            <button type="submit" name="save" class="premium-submit-btn">
+              Create User Profile <i class="fa-solid fa-user-check"></i>
+            </button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,340 @@
+/* --- GLOBAL DEFINITIONS & RESET --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  overflow-x: hidden; /* Prevents tiny lateral scrollbar layout breaks */
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  color: #1a202c;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Pushes the footer cleanly to the bottom window margin */
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease, transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* --- TOP UTILITY BAR --- */
+.utility-bar {
+  background-color: #0b132a;
+  color: #a0aec0;
+  font-size: 13px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%; /* Stretches the block out to the viewport border */
+}
+.utility-bar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.utility-links a {
+  margin-right: 18px;
+}
+.utility-links a:hover {
+  color: #ffffff;
+}
+.header-socials a {
+  margin-left: 14px;
+  font-size: 14px;
+  display: inline-block;
+}
+.header-socials a:hover {
+  color: #ffffff;
+  transform: scale(1.2); /* Zooms up the social icons slightly */
+}
+
+/* --- MAIN FLEX HEADER --- */
+header#header {
+  background-color: #ffffff;
+  padding: 22px 0;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  width: 100%; /* Fixes the full-width strip across wide monitors */
+}
+header#header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-wrapper img {
+  height: 34px;
+  display: block;
+  transition: transform 0.2s ease;
+}
+.logo-wrapper a:hover img {
+  transform: scale(1.03); /* Subtle interactive pop on logo hover */
+}
+
+/* --- NAVIGATION ROW LINK STYLES --- */
+#menu-bar .menu {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+}
+#menu-bar .menu li {
+  position: relative;
+}
+#menu-bar .menu a {
+  font-size: 15px;
+  font-weight: 500;
+  color: #4a5568;
+  padding: 6px 0;
+  display: block;
+}
+#menu-bar .menu a:hover, 
+#menu-bar .menu li.active a {
+  color: #e53e3e; /* Red accent matching the mockup */
+}
+/* Underline Slide-In Hover Animation */
+#menu-bar .menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #e53e3e;
+  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+#menu-bar .menu a:hover::after,
+#menu-bar .menu li.active a::after {
+  width: 100%;
+}
+
+/* --- ACTION ITEMS --- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.subscribe-btn {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4a5568;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.search-trigger {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #4a5568;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.search-trigger:hover, 
+.subscribe-btn:hover {
+  color: #e53e3e;
+  transform: translateY(-1px);
+}
+
+/* --- MAIN PAGE CORE STUB GRID --- */
+#main-content {
+  padding: 40px 0;
+  flex-grow: 1; /* Automatically stretches main content to prevent raw background leaks below shorter templates */
+}
+.content-grid {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  gap: 30px;
+}
+
+/* --- GRID SYSTEM COMPREHENSIVE FOOTER --- */
+footer#footer {
+  background-color: #0b132a;
+  color: #a0aec0;
+  padding: 60px 0 24px 0;
+  width: 100%; /* Forces the dark design boundary to meet the edge margins */
+  margin-top: auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 1fr 2fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.footer-column h4 {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.footer-column ul {
+  list-style: none;
+}
+.footer-column ul li {
+  margin-bottom: 12px;
+}
+.footer-column ul a {
+  font-size: 14px;
+}
+.footer-column ul a:hover {
+  color: #ffffff;
+  padding-left: 4px; /* Subtle modern indentation push on footer list hover */
+}
+
+/* --- FOOTER COLUMN BRAND COMPONENT --- */
+.brand-info .footer-logo {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: -0.5px;
+}
+.brand-info .badge {
+  background-color: #e53e3e;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 20px;
+}
+.brand-info p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+.footer-socials a {
+  width: 34px;
+  height: 34px;
+  background-color: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.footer-socials a:hover {
+  background-color: #e53e3e;
+  color: #ffffff;
+  transform: translateY(-3px); /* Lifts standard social block up */
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.35);
+}
+
+/* --- FOOTER NEWSLETTER SUBSCRIPTION --- */
+.newsletter-col p {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+.newsletter-form {
+  display: flex;
+}
+.newsletter-form input {
+  flex: 1;
+  padding: 12px 16px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px 0 0 4px;
+  color: #ffffff;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.newsletter-form input::placeholder {
+  color: #718096;
+}
+.newsletter-form input:focus {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: #e53e3e; /* Input focus highlight */
+}
+.newsletter-form button {
+  background-color: #e53e3e;
+  color: #ffffff;
+  border: none;
+  padding: 0 22px;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.newsletter-form button:hover {
+  background-color: #c53030;
+}
+.newsletter-form button:active {
+  transform: scale(0.97); /* Compression click effect */
+}
+
+/* --- FOOTER BOTTOM ROW --- */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  font-size: 13px;
+}
+/* Heart Beat Infinite Loop Animation */
+.footer-bottom i.fas.fa-heart {
+  color: #e53e3e;
+  margin: 0 2px;
+  display: inline-block;
+  animation: heartPulse 1.4s infinite ease-in-out;
+}
+
+@keyframes heartPulse {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.2); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.15); }
+  70% { transform: scale(1); }
+}
+
+/* --- RESPONSIVE STRUCTURAL MEDIA BREAKPOINTS --- */
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  #menu-bar {
+    display: none;
+  }
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 576px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .utility-bar .container, 
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  .utility-links a {
+    margin: 0 8px;
+  }
+  .header-socials a {
+    margin: 0 6px;
+  }
+}

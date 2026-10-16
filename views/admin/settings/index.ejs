@@ -1,0 +1,182 @@
+ <main class="settings-layout">
+    
+    <!-- Left Sidebar: Profile Card with Embedded Corner Icon Button -->
+    <aside class="settings-profile-sidebar">
+      <div class="profile-card">
+        
+        <!-- Profile Picture Container with Bottom Right Overlay Button -->
+        <div class="profile-card__avatar-container">
+          <div class="profile-card__avatar-wrap">
+            <img 
+              src="<%= user.profilePic || '/uploads/default.png' %>" 
+              alt="User avatar" 
+              class="profile-card__img"
+              id="sidebarAvatarPreview"
+            >
+          </div>
+          <!-- JavaScript modal trigger replaced direct link anchor -->
+          <button type="button" class="profile-card__edit-btn-overlay" onclick="openUploadModal()" title="Change Photo">
+            <i class="fas fa-camera" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <h2 class="profile-card__name"><%= user.fullname.toUpperCase() %></h2>
+        <p class="profile-card__meta">Account <%= user.role.charAt(0).toUpperCase() + user.role.slice(1) %>
+</p>
+      </div>
+    </aside>
+
+    <!-- Right Layout: Content Action Rows -->
+    <section class="settings-content-area">
+      <header class="settings-title-block">
+        <h1 class="settings-title-block__main">Account Preferences</h1>
+        <p class="settings-title-block__sub">Manage your security profiles, credential details, and linked systems.</p>
+      </header>
+
+      <div class="action-stack">
+        <a href="/admin/update-user/<%= user.id %>" class="action-row">
+          <div class="action-row__icon action-row__icon--profile">
+            <i class="fas fa-sliders-h" aria-hidden="true"></i>
+          </div>
+          <div class="action-row__text">
+            <h3 class="action-row__heading">Profile Specifications</h3>
+            <p class="action-row__desc">Update personal information, public display handles, and active email contact paths.</p>
+          </div>
+          <div class="action-row__arrow">
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </div>
+        </a>
+
+        <a href="/admin/update-user/<%= user.id %>" class="action-row">
+          <div class="action-row__icon action-row__icon--security">
+            <i class="fas fa-lock" aria-hidden="true"></i>
+          </div>
+          <div class="action-row__text">
+            <h3 class="action-row__heading">Security & Password</h3>
+            <p class="action-row__desc">Rotate passwords, enforce strong authentication factors, and review active sessions.</p>
+          </div>
+          <div class="action-row__arrow">
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </div>
+        </a>
+
+        <a href="/admin/logoutpage" class="action-row">
+          <div class="action-row__icon action-row__icon--switch">
+            <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+          </div>
+          <div class="action-row__text">
+            <h3 class="action-row__heading">Switch Active Workspace</h3>
+            <p class="action-row__desc">Link another environment context or authenticate a secondary operational token.</p>
+          </div>
+          <div class="action-row__arrow">
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Interactive Image Upload Modal Window Wrapper -->
+  <div id="uploadPhotoModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-card__header">
+        <h3 id="modalTitle" class="modal-card__title">Update Profile Picture</h3>
+        <button type="button" class="modal-card__close-btn" onclick="closeUploadModal()" aria-label="Close dialog">&times;</button>
+      </div>
+      
+      <form action="/admin/settings/profile-pic" method="POST" enctype="multipart/form-data" class="modal-card__body">
+        
+        <!-- Live Upload Target Dropzone Framework -->
+        <div class="dropzone" id="dropzoneContainer">
+          <input type="file" name="profilePic" id="modalFileInput" accept="image/*" class="dropzone__input" required onchange="handleFileSelect(this)">
+          
+          <div class="dropzone_z_placeholder" id="dropzonePlaceholder">
+            <i class="fas fa-cloud-upload-alt dropzone__icon"></i>
+            <p class="dropzone__text">Drag and drop your image here or <span>browse</span></p>
+            <p class="dropzone__hint">Supports JPG, PNG up to 5MB</p>
+          </div>
+
+          <div class="dropzone__preview dropzone__preview--hidden" id="dropzonePreviewContainer">
+            <img src="" alt="Upload preview" class="dropzone__preview-img" id="modalImagePreview">
+            <button type="button" class="dropzone__remove-btn" onclick="clearSelectedFile(event)">Remove Image</button>
+          </div>
+        </div>
+
+        <div class="modal-card__footer">
+          <button type="button" class="modal-btn modal-btn--secondary" onclick="closeUploadModal()">Cancel</button>
+          <button type="submit" class="modal-btn modal-btn--primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+   <script>
+    const modal = document.getElementById('uploadPhotoModal');
+    const fileInput = document.getElementById('modalFileInput');
+    const previewContainer = document.getElementById('dropzonePreviewContainer');
+    const placeholder = document.getElementById('dropzonePlaceholder');
+    const previewImg = document.getElementById('modalImagePreview');
+    const dropzone = document.getElementById('dropzoneContainer');
+
+    function openUploadModal() {
+      modal.classList.add('modal-overlay--visible');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeUploadModal() {
+      modal.classList.remove('modal-overlay--visible');
+      document.body.style.overflow = '';
+      clearSelectedFile();
+    }
+
+    // Close window instantly when clicking background masks
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) closeUploadModal();
+    });
+
+    function handleFileSelect(input) {
+      const file = input.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          previewImg.src = e.target.result;
+          placeholder.classList.add('dropzone__placeholder--hidden');
+          previewContainer.classList.remove('dropzone__preview--hidden');
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function clearSelectedFile(e) {
+      if (e) e.preventDefault();
+      fileInput.value = '';
+      previewImg.src = '';
+      previewContainer.classList.add('dropzone__preview--hidden');
+      placeholder.classList.remove('dropzone__placeholder--hidden');
+    }
+
+    // Modern HTML5 Drag and Drop Handlers
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropzone.classList.add('dropzone--active');
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dropzone--active');
+      }, false);
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      fileInput.files = files;
+      handleFileSelect(fileInput);
+    });
+  </script>

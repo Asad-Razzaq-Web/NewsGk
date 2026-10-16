@@ -1,0 +1,125 @@
+<div id="admin-content">
+    <div class="container">
+
+        <!-- Top Action Section Header Row -->
+        <header class="table-header-row">
+            <div class="title-wrap">
+                <h1 class="admin-heading">
+                    <i class="fa-solid fa-layer-group"></i> All Categories
+                </h1>
+                <p class="table-subtext">Configure publishing channels, manage article distribution taxonomies, and view content counts.</p>
+            </div>
+            
+            <!-- Upgraded High-End Call to Action Button -->
+            <a class="add-new-btn" href="/admin/add-category">
+                <i class="fa-solid fa-plus"></i> Add New Category
+            </a>
+        </header>
+
+        <!-- PREMIUM ARCHITECTURAL TAXONOMY TERMINAL TABLE -->
+        <div class="table-card-container">
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th class="col-index">S.No.</th>
+                        <th class="col-main-title">Category Name</th>
+                        <th class="col-desc">Description</th>
+                        <th class="col-slug">Slug Link</th>
+                        <th class="col-ctrl-center" colspan="2">Controls</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (categories && categories.length > 0) { %>
+                        <% categories.forEach((category, index) => { %>
+                            <tr>
+                                <!-- Fixed Dynamic Counter Offset Math -->
+                                <td class="cell-index">
+                                    <span class="index-num-tag">
+                                        <%= String((page - 1) * limit + (index + 1)).padStart(2, '0') %>
+                                    </span>
+                                </td>
+                                
+                                <!-- Category Name -->
+                                <td class="cell-category-title">
+                                    <span class="category-indicator-badge"><%= category.name %></span>
+                                </td>
+                                
+                                <!-- DYNAMIC SHORTENED DESCRIPTION CELL -->
+                                <td class="cell-category-desc">
+                                    <span class="desc-text-wrapper" title="<%= category.description %>">
+                                        <% if (category.description) { %>
+                                            <%= category.description.length > 40 ? category.description.substring(0, 40) + '...' : category.description %>
+                                        <% } else { %>
+                                            <span class="empty-placeholder">No summary provided</span>
+                                        <% } %>
+                                    </span>
+                                </td>
+                                
+                                <!-- Slug Parameter String Tracking -->
+                                <td class="cell-category-slug">
+                                    <code class="slug-pill"><%= category.slug %></code>
+                                </td>
+                                
+                                <!-- Control Action 1: Edit -->
+                                <td class="cell-action-btn edit-action">
+                                    <a href="/admin/update-category/<%= category._id %>" class="action-icon-link link-edit" title="Modify Category Schema">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                </td>
+
+                                <!-- Control Action 2: Delete -->
+                                <td class="cell-action-btn delete-action">
+                                    <a href="/admin/delete-category/<%= category._id %>" 
+                                       class="action-icon-link link-delete" 
+                                       data-username="<%= category.name %>" 
+                                       title="Purge Category Node">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr>
+                            <!-- Extended colspan to match the new 6 column footprint -->
+                            <td colspan="6" class="empty-table-cell">
+                                <i class="fa-solid fa-folder-open"></i>
+                                No categories indexed in this record track yet.
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Master Dynamic Pagination Section Row Wrapper -->
+        <div class="admin-pagination-wrapper">
+            <nav class="pagination" aria-label="Categories index navigation tracks">
+                
+                <!-- Dynamic Previous Button -->
+                <% if (page > 1) { %>
+                    <a class="page-link" href="/admin/category?page=<%= page - 1 %>">Previous</a>
+                <% } else { %>
+                    <span class="page-link disabled" aria-disabled="true">Previous</span>
+                <% } %>
+
+                <!-- Dynamic Page Numbers -->
+                <% for (let i = 1; i <= totalPages; i++) { %>
+                    <% if (i === page) { %>
+                        <span class="page-link active" aria-current="page"><%= i %></span>
+                    <% } else { %>
+                        <a class="page-link" href="/admin/category?page=<%= i %>"><%= i %></a>
+                    <% } %>
+                <% } %>
+
+                <!-- Dynamic Next Button -->
+                <% if (page < totalPages) { %>
+                    <a class="page-link" href="/admin/category?page=<%= page + 1 %>">Next</a>
+                <% } else { %>
+                    <span class="page-link disabled" aria-disabled="true">Next</span>
+                <% } %>
+
+            </nav>
+        </div>
+
+    </div>
+</div>

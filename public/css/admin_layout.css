@@ -1,0 +1,446 @@
+/* ==========================================================================
+   GLOBAL ADMINISTRATIVE LAYOUT: CORE ARCHITECTURE & PRESENTATION TRACK
+   ========================================================================== */
+
+/* --- SYSTEM-WIDE EASING VARIABLES --- */
+:root {
+  /* Premium cinematic motion curves */
+  --ease-fluid: cubic-bezier(0.25, 1, 0.5, 1);     /* Out-quart fluid curve */
+  --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1); /* Snappy bounce motion curve */
+  
+  /* Standardized motion durations */
+  --duration-fast: 0.2s;
+  --duration-smooth: 0.35s;
+}
+
+/* --- RESET & ROOT RULES --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+body.admin-panel-root {
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f6f9; 
+  color: #1a202c;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  /* Hardware acceleration added via will-change for micro-interactions */
+  will-change: transform, color, background-color;
+  transition: color var(--duration-fast) var(--ease-fluid), 
+              background-color var(--duration-fast) var(--ease-fluid), 
+              transform var(--duration-fast) var(--ease-fluid);
+}
+
+/* --- 1. TOP DEDICATED ADMIN HEADER --- */
+header#admin-main-header {
+  background-color: #0b132a; 
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.header-flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.admin-brand .logo-text {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.logo-accent-badge {
+  background-color: #e53e3e; 
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 2px;
+}
+.admin-workspace-tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  background-color: rgba(255,255,255,0.08);
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #a0aec0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.admin-profile-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #cbd5e1;
+}
+.status-indicator-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #38a169; 
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px #38a169;
+}
+.quick-logout-btn {
+  background-color: rgba(255,255,255,0.05);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: #ffffff;
+  margin-left: 6px;
+  will-change: transform, background-color;
+  transition: background-color var(--duration-fast) var(--ease-fluid), 
+              transform var(--duration-fast) var(--ease-elastic);
+}
+.quick-logout-btn:hover {
+  background-color: #e53e3e;
+  transform: scale(1.08);
+}
+.quick-logout-btn:active {
+  transform: scale(0.95);
+}
+
+/* --- 2. THE STICKY BAR MENU ROW --- */
+nav#news-menubar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.015);
+}
+.nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.news-menu {
+  display: flex;
+  list-style: none;
+}
+.news-menu li {
+  position: relative;
+}
+.news-menu li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5568;
+  position: relative;
+}
+
+/* Pseudo-element underline transformation prevents jerky jump shifts */
+.news-menu li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #e53e3e;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--duration-smooth) var(--ease-fluid);
+}
+.news-menu li a i {
+  font-size: 14px;
+  color: #a0aec0;
+  transition: color var(--duration-fast) var(--ease-fluid), 
+              transform var(--duration-fast) var(--ease-elastic);
+}
+
+/* Interactive Hover States */
+.news-menu li a:hover, 
+.news-menu li.active a {
+  color: #e53e3e;
+  background-color: #fffbfb;
+}
+.news-menu li a:hover::after, 
+.news-menu li.active a::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.news-menu li a:hover i, 
+.news-menu li.active a i {
+  color: #e53e3e;
+  transform: scale(1.15) rotate(3deg);
+}
+
+/* Menu Field Search Widget Box */
+.search-box .menu-search-form {
+  display: flex;
+  position: relative;
+}
+.search-box input {
+  padding: 8px 36px 8px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  border: 1px solid #e2e8f0;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  outline: none;
+  width: 240px;
+  will-change: width, box-shadow, border-color, background-color;
+  transition: width var(--duration-smooth) var(--ease-fluid), 
+              background-color var(--duration-smooth) var(--ease-fluid), 
+              border-color var(--duration-smooth) var(--ease-fluid), 
+              box-shadow var(--duration-smooth) var(--ease-fluid);
+}
+.search-box input:focus {
+  width: 290px;
+  background-color: #ffffff;
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.12);
+}
+.search-box button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 36px;
+  background: transparent;
+  border: none;
+  color: #a0aec0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--duration-fast) var(--ease-fluid), 
+              transform var(--duration-fast) var(--ease-elastic);
+}
+.search-box button:hover {
+  color: #e53e3e;
+  transform: scale(1.2);
+}
+
+/* --- 3. BREAKING MESSAGES FIELD SYSTEM --- */
+.breaking-news {
+  background-color: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 13px;
+}
+.breaking-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.breaking-title {
+  background-color: #e53e3e;
+  color: #ffffff;
+  padding: 4px 10px;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+.breaking-text {
+  color: #4a5568;
+  font-weight: 500;
+}
+
+/* --- 4. CORE BODY TARGET CONTAINER SLOTS --- */
+main#content {
+  flex-grow: 1;
+}
+.content-inner-track {
+  width: 100%;
+}
+
+/* --- 5. COMPREHENSIVE REFACTORED FOOTER --- */
+footer.news-footer {
+  background-color: #0b132a;
+  color: #a0aec0;
+  padding: 60px 0 0 0;
+  font-size: 13px;
+  margin-top: auto;
+}
+.footer-container {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1.8fr;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+.footer-column h3 {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.footer-column ul {
+  list-style: none;
+}
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+.footer-column ul a {
+  display: inline-block;
+  transition: color var(--duration-fast) var(--ease-fluid), 
+              transform var(--duration-fast) var(--ease-fluid);
+}
+.footer-column ul a:hover {
+  color: #ffffff;
+  transform: translateX(4px); /* Clean indent instead of structural layout shifts */
+}
+.footer-brand h2 {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+.footer-brand p {
+  line-height: 1.6;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+.social-links a {
+  width: 34px;
+  height: 34px;
+  background-color: rgba(255,255,255,0.04);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 14px;
+  will-change: transform, background-color;
+  transition: background-color var(--duration-fast) var(--ease-fluid), 
+              transform var(--duration-fast) var(--ease-elastic);
+}
+.social-links a:hover {
+  background-color: #e53e3e;
+  transform: translateY(-4px) scale(1.05);
+}
+.newsletter p {
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.footer-sub-form {
+  display: flex;
+}
+.footer-sub-form input {
+  flex: 1;
+  padding: 12px 14px;
+  background-color: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px 0 0 6px;
+  color: #ffffff;
+  font-size: 13px;
+  outline: none;
+  transition: background-color var(--duration-fast) var(--ease-fluid), 
+              border-color var(--duration-fast) var(--ease-fluid);
+}
+.footer-sub-form input:focus {
+  background-color: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.2);
+}
+.footer-sub-form button {
+  background-color: #e53e3e;
+  color: #ffffff;
+  border: none;
+  padding: 0 18px;
+  border-radius: 0 6px 6px 0;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color var(--duration-fast) var(--ease-fluid);
+}
+.footer-sub-form button:hover {
+  background-color: #c53030;
+}
+
+/* Base Footer Attributions Horizontal Row */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 24px 0;
+  font-size: 12px;
+}
+.footer-bottom-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-bottom-links a {
+  margin-left: 16px;
+}
+.footer-bottom-links a:hover {
+  color: #ffffff;
+}
+
+/* --- 6. GLOBAL BREAKPOINTS MEDIA GRAPH TRACK --- */
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .nav-row {
+    padding: 10px 0;
+  }
+  .search-box {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .search-box input {
+    width: 100%;
+  }
+  .search-box input:focus {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  #news-menubar .nav-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .news-menu {
+    flex-direction: column;
+    width: 100%;
+  }
+  .news-menu li a {
+    padding: 12px 0;
+    border-bottom: none;
+  }
+  .news-menu li a::after {
+    display: none; /* Disables underline animation path on stacked mobile screens */
+  }
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+.footer-bottom-flex{
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+}

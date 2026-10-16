@@ -1,0 +1,302 @@
+/* ==========================================================================
+   EDITORIAL SINGLE POST & ENGAGEMENT: HIGH-END ARCHITECTURE
+   ========================================================================== */
+
+/* --- 1. SINGLE POST HEADER & TYPOGRAPHY --- */
+.single-post-header {
+  margin-bottom: 24px;
+}
+
+.editorial-category-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #e53e3e;
+  margin-bottom: 12px;
+}
+
+.single-post-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #0b132a;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  letter-spacing: -0.8px;
+}
+
+.post-information {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+  color: #718096;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 20px;
+}
+
+.post-information .meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.author-block {
+  color: #1a202c;
+  font-weight: 600;
+}
+
+.author-avatar-mini {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-name-link:hover {
+  color: #e53e3e;
+  text-decoration: underline;
+}
+
+/* --- 2. IMMERSIVE MEDIA WRAPPER --- */
+.feature-image-wrapper {
+  width: 100%;
+  height: 480px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+.single-feature-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- 3. CORE ARTICLE READING TEXT --- */
+.article-body-text {
+  font-size: 16px;
+  color: #2d3748;
+  line-height: 1.75;
+}
+
+.article-body-text p {
+  margin-bottom: 20px;
+}
+
+.article-body-text .lead-paragraph {
+  font-size: 19px;
+  line-height: 1.65;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+/* --- 4. FLOATING BORDERLESS COMMENT INPUTS --- */
+.comments-section {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 2px solid #e2e8f0;
+}
+
+.section-title-accent {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0b132a;
+  margin-bottom: 24px;
+  position: relative;
+  padding-left: 14px;
+}
+
+.section-title-accent::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 4px;
+  height: 16px;
+  background-color: #e53e3e;
+}
+
+.comment-form-wrapper {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(11, 19, 42, 0.02);
+  margin-bottom: 40px;
+}
+
+.form-dual-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+/* Google-Style Floating Label Fields */
+.input-field-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.input-field-wrap input,
+.input-field-wrap textarea {
+  width: 100%;
+  padding: 10px 0;
+  font-family: inherit;
+  font-size: 15px;
+  color: #1a202c;
+  border: none;
+  border-bottom: 1px solid #cbd5e0;
+  background: transparent;
+  outline: none;
+}
+
+.input-field-wrap textarea {
+  resize: none;
+}
+
+.input-field-wrap label {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  font-size: 15px;
+  color: #718096;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Slide-out underline line animation */
+.input-field-wrap .focus-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #e53e3e;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Interactive focus transitions */
+.input-field-wrap input:focus ~ label,
+.input-field-wrap input:not(:placeholder-shown) ~ label,
+.input-field-wrap textarea:focus ~ label,
+.input-field-wrap textarea:not(:placeholder-shown) ~ label {
+  top: -12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #e53e3e;
+}
+
+.input-field-wrap input:focus ~ .focus-line,
+.input-field-wrap textarea:focus ~ .focus-line {
+  width: 100%;
+}
+
+/* Action Submit Button Component */
+.submit-comment-btn {
+  background-color: #0b132a;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(11, 19, 42, 0.1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.submit-comment-btn i {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.submit-comment-btn:hover {
+  background-color: #e53e3e;
+  box-shadow: 0 6px 16px rgba(229, 62, 62, 0.25);
+  transform: translateY(-2px);
+}
+
+.submit-comment-btn:hover i {
+  transform: translateX(2px) translateY(-2px);
+}
+
+.submit-comment-btn:active {
+  transform: scale(0.97);
+}
+
+/* --- 5. CLEAN COMMENTS LIVE SEPARATOR CARD --- */
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.comment-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.01);
+  border: 1px solid #e2e8f0;
+}
+
+.comment-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.comment-user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #edf2f7;
+  color: #4a5568;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.comment-user-details h5 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0b132a;
+}
+
+.comment-time-stamp {
+  font-size: 11px;
+  color: #a0aec0;
+  font-weight: 500;
+}
+
+.comment-card-body p {
+  font-size: 14px;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+/* --- SCREEN CONSTRAINTS RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  .single-post-title {
+    font-size: 26px;
+  }
+  .feature-image-wrapper {
+    height: 300px;
+  }
+  .form-dual-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .comment-form-wrapper {
+    padding: 24px;
+  }
+}

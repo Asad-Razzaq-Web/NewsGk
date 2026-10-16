@@ -1,0 +1,220 @@
+/* ==========================================================================
+   ADMIN PANELS SYSTEM MODULATION: RECORD EDITING ARCHITECTURE
+   ========================================================================== */
+
+.form-header-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  gap: 20px;
+}
+
+.form-header-top-row .admin-heading {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0b132a; /* Deep midnight signature charcoal */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.form-header-top-row .admin-heading i {
+  color: #e53e3e; /* Accent brand red icon tint */
+}
+
+.form-subtext {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* Functional Back Utility Navigation Button Link */
+.back-to-index-btn {
+  background-color: #ffffff;
+  color: #475569 !important;
+  border: 1px solid #e2e8f0;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.01);
+  transition: all 0.2s ease;
+}
+
+.back-to-index-btn:hover {
+  background-color: #f8fafc;
+  color: #0b132a !important;
+  border-color: #cbd5e1;
+}
+
+/* --- THE MASTER EDITING BACKGROUND CARD --- */
+.form-card-container {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.01), 0 4px 12px rgba(11, 19, 42, 0.01);
+  padding: 40px;
+}
+
+.premium-admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px; /* Uniform vertical row spacing */
+}
+
+/* --- A. GOOGLE-STYLE FLOATING LABEL SYSTEM --- */
+.form-group-floating {
+  position: relative;
+  width: 100%;
+}
+
+.form-group-floating input {
+  width: 100%;
+  padding: 12px 0;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0b132a;
+  border: none;
+  border-bottom: 2px solid #e2e8f0;
+  background: transparent;
+  outline: none;
+}
+
+.form-group-floating label {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  font-size: 15px;
+  color: #94a3b8;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.focus-line-slide {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #e53e3e;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Interactive focus floating label transition triggers */
+.form-group-floating input:focus ~ label,
+.form-group-floating input:not(:placeholder-shown) ~ label {
+  top: -14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #e53e3e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group-floating input:focus ~ .focus-line-slide {
+  width: 100%;
+}
+
+/* --- B. STANDARD DESCRIPTION FIELD SYSTEM --- */
+.form-group-standard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.static-field-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #475569;
+}
+
+.textarea-input-wrap textarea {
+  width: 100%;
+  padding: 16px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f8fafc;
+  transition: all 0.2s ease;
+  resize: vertical;
+}
+
+.textarea-input-wrap textarea:focus {
+  background-color: #ffffff;
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.08); /* Premium halo glow focus effect */
+}
+
+/* --- C. FORM ACTION TRIGGER SUBMIT ROW --- */
+.form-action-footer-row {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 28px;
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.premium-submit-btn {
+  background-color: #0b132a; /* Executive midnight theme base color */
+  color: #ffffff;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(11, 19, 42, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-submit-btn i {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.premium-submit-btn:hover {
+  background-color: #e53e3e; /* Shifts smoothly to signature red theme */
+  box-shadow: 0 6px 20px rgba(229, 62, 62, 0.25);
+  transform: translateY(-2px);
+}
+
+.premium-submit-btn:hover i {
+  transform: scale(1.1) rotate(5deg); /* Playful dynamic pop animation loop hook */
+}
+
+.premium-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* --- RESPONSIVE STRUCTURAL MEDIA CONSTRAINTS --- */
+@media (max-width: 768px) {
+  .form-header-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .back-to-index-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .form-card-container {
+    padding: 24px;
+  }
+}

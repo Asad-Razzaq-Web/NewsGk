@@ -1,0 +1,79 @@
+<div id="admin-content">
+  <div class="container">
+
+    <!-- Top Administrative Navigation Header Row -->
+    <header class="form-header-top-row">
+      <div class="title-wrap">
+        <h1 class="admin-heading">
+          <i class="fa-solid fa-user-pen"></i> Modify User Details
+        </h1>
+        <p class="form-subtext">Update platform permissions, account credentials, or role classifications for this operator profile.</p>
+      </div>
+      <a href="/admin/users" class="back-to-index-btn"><i class="fa-solid fa-arrow-left"></i> Back to Directory</a>
+    </header>
+
+    <!-- PREMIUM INTERACTIVE AUTHENTICATION EDIT TERMINAL -->
+    <div class="form-card-container">
+      <div class="form-body">
+
+        <!-- Form Start -->
+        <form action="/admin/update-user/<%= user._id %>" method="POST" autocomplete="off" class="premium-admin-form">
+          
+          <!-- DUAL ROW GRID BLOCK 1: ACCOUNT IDENTIFIER VALUES -->
+          <div class="form-dual-fields-grid">
+            
+            <!-- FULL NAME (Floating Label System) -->
+            <div class="form-group-floating">
+              <input type="text" name="fullname" id="fullname" required placeholder=" " value="<%= user.fullname %>">
+              <label for="fullname">Full Name</label>
+              <span class="focus-line-slide"></span>
+            </div>
+
+            <!-- USERNAME (Floating Label System) -->
+            <div class="form-group-floating">
+              <input type="text" name="username" id="username" required placeholder=" " value="<%= user.username %>">
+              <label for="username">Username</label>
+              <span class="focus-line-slide"></span>
+            </div>
+
+          </div>
+
+          <!-- DUAL ROW GRID BLOCK 2: SECURITY & CLEARANCE PARAMETERS -->
+          <div class="form-dual-fields-grid">
+
+            <!-- PASSWORD (Floating Label System — Left Blank intentionally if unchanged) -->
+            <div class="form-group-floating">
+              <input type="password" name="password" id="password" placeholder=" ">
+              <label for="password">New Password (Leave blank to keep current)</label>
+              <span class="focus-line-slide"></span>
+            </div>
+
+            <!-- USER ROLE SELECTOR (Static Alignment Component) -->
+            <div class="form-group-standard">
+              <label class="static-field-label" for="user_role">Security Role Assignment</label>
+              <div class="custom-select-wrapper">
+                <select name="role" id="user_role" required>
+                  <option value="author" <%= user.role =='author'? 'selected' :'' %>>Author / Contributor</option>
+                  <option value="admin" <%= user.role =='admin'? 'selected' :'' %>>System Administrator</option>
+                </select>
+                <i class="fa-solid fa-chevron-down custom-select-arrow"></i>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- DUAL ROW CONFIGURATION COMMIT BUTTON -->
+          <div class="form-action-footer-row">
+            <button type="submit" name="save" class="premium-submit-btn">
+              Apply Modifications <i class="fa-solid fa-user-check"></i>
+            </button>
+          </div>
+
+        </form>
+        <!-- Form End -->
+
+      </div>
+    </div>
+
+  </div>
+</div>

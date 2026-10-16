@@ -1,0 +1,62 @@
+<div id="admin-content">
+  <div class="container">
+
+    <!-- Top Administrative Navigation Header Row -->
+    <header class="form-header-top-row">
+      <div class="title-wrap">
+        <h1 class="admin-heading">
+          <i class="fa-solid fa-folder-plus"></i> Update Category
+        </h1>
+        <p class="form-subtext">Modify taxomatic indexing channels, classification structures, and database taxonomy metadata.</p>
+      </div>
+      <a href="/admin/categories" class="back-to-index-btn"><i class="fa-solid fa-arrow-left"></i> Back to Directory</a>
+    </header>
+
+    <!-- PREMIUM INTERACTIVE ARCHITECTURAL CARD OVERLAY -->
+    <div class="form-card-container">
+      <div class="form-body">
+
+        <form action="/admin/update-category/<%= category._id %>" method="POST" autocomplete="off" class="premium-admin-form">
+          
+          <!-- CATEGORY NAME (Floating Label System) -->
+          <div class="form-group-floating">
+            <input 
+              type="text" 
+              name="cat" 
+              id="cat" 
+              required 
+              placeholder=" " 
+              value="<%= category.name %>"
+            >
+            <label for="cat">Category Name</label>
+            <span class="focus-line-slide"></span>
+          </div>
+
+          <!-- DESCRIPTION AREA BLOCK (Standard System Framework) -->
+          <div class="form-group-standard">
+            <label class="static-field-label" for="description">Taxonomy Description</label>
+            <div class="textarea-input-wrap">
+              <!-- Note: Keep content tight inside tags to prevent unwanted whitespace indentation -->
+              <textarea 
+                name="description" 
+                id="description" 
+                rows="5" 
+                placeholder="Provide a detailed description of this layout class..."
+              ><%= category.description %></textarea>
+            </div>
+          </div>
+
+          <!-- SYSTEM INTERACTION EXECUTIVE SUBMIT TRIGGER -->
+          <div class="form-action-footer-row">
+            <button type="submit" name="save" class="premium-submit-btn">
+              Apply System Changes <i class="fa-solid fa-folder-check"></i>
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>

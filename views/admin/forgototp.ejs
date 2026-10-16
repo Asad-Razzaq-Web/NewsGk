@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset Account Password</title>
+  
+  <!-- Font Awesome CDN for Interface Icons -->
+   
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  
+  <!-- Link to your main styling layout -->
+    <link rel="stylesheet" href="/css/forgot-otp.css">
+
+  
+  <!-- Inline style override to guarantee layout elements stay hidden on this page -->
+  <style>
+    header, footer, nav, .main-header, .main-footer {
+      display: none !important;
+    }
+  </style>
+</head>
+<body class="admin-login-body">
+
+  <div id="wrapper-admin">
+    <div class="container">
+      <div class="login-wrapper">
+        <div class="login-card">
+          
+          <!-- Integrated Brand Logo Element -->
+          <div class="card-header">
+            <div class="brand-logo">
+              <span class="logo-main">News</span><span class="logo-badge">GK</span>
+            </div>
+            <h2>Forgot Password?</h2>
+            <p class="header-subtext">
+              Enter your credential username. We will process and transmit a secured 6-digit confirmation OTP code to your registered inbox.
+            </p>
+          </div>
+
+          <!-- Submission Target Form -->
+          <form action="/admin/forgot-password" method="POST">
+            
+            <!-- Floating Borderless Username Group -->
+            <div class="form-group">
+              <input 
+                type="text" 
+                name="email" 
+                id="username" 
+                placeholder=" " 
+                required
+                autocomplete="email"
+              >
+              <label for="username">Enter Your Email Address</label>
+              <div class="focus-line-indicator"></div>
+            </div>
+
+            <!-- Action Executor Button -->
+            <button type="submit" class="btn-login">
+              <span>Send Verification Code</span>
+              <i class="fas fa-paper-plane" aria-hidden="true"></i>
+            </button>
+
+          </form>
+          
+          <!-- Back to Login Navigation Row -->
+          <div class="back-to-login-row">
+            <a href="/admin" class="back-link-text">
+              <i class="fas fa-arrow-left" aria-hidden="true"></i>
+              <span>Return to Sign In</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

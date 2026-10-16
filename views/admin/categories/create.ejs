@@ -1,0 +1,51 @@
+<div id="admin-content">
+  <div class="container">
+
+    <!-- Top Administrative Navigation Header Row -->
+    <header class="form-header-top-row">
+      <div class="title-wrap">
+        <h1 class="admin-heading">
+          <i class="fa-solid fa-circle-plus"></i> Add New Category
+        </h1>
+        <p class="form-subtext">Create a new publishing channel track to classify and organize news distribution assets.</p>
+      </div>
+      <a href="/admin/category" class="back-to-index-btn"><i class="fa-solid fa-arrow-left"></i> Back to Categories</a>
+    </header>
+
+    <!-- PREMIUM CREATION TERMINAL CONTAINER CARD -->
+    <div class="form-card-container">
+      <div class="form-body">
+
+        <!-- Form Start -->
+        <form action="/admin/add-category" method="POST" autocomplete="off" class="premium-admin-form">
+
+          <!-- CATEGORY NAME FIELD (Floating Label System) -->
+          <div class="form-group-floating">
+            <input type="text" name="cat" id="category_name" autocomplete="off" required placeholder=" ">
+            <label for="category_name">Category Name</label>
+            <span class="focus-line-slide"></span>
+          </div>
+
+          <!-- DESCRIPTION TEXTAREA LAYER -->
+          <div class="form-group-standard">
+            <label class="static-field-label" for="category_description">Category Description</label>
+            <div class="textarea-input-wrap">
+              <textarea name="description" id="category_description" rows="5" placeholder="Provide a brief summary of the content topics this category track will cover..."></textarea>
+            </div>
+          </div>
+
+          <!-- SYSTEM INTERACTION EXECUTIVE SUBMIT TRIGGER -->
+          <div class="form-action-footer-row">
+            <button type="submit" name="save" class="premium-submit-btn">
+              Save Category <i class="fa-solid fa-layer-group"></i>
+            </button>
+          </div>
+
+        </form>
+        <!-- Form End -->
+
+      </div>
+    </div>
+
+  </div>
+</div>

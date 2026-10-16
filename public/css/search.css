@@ -1,0 +1,125 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f6f9;
+  padding: 30px;
+}
+
+/* Container */
+.post-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Heading */
+.page-heading {
+  margin-bottom: 20px;
+  font-size: 26px;
+}
+
+/* Post Card */
+.post-card {
+  background: #fff;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Row */
+.post-row {
+  display: flex;
+  gap: 15px;
+}
+
+/* Image */
+.post-img img {
+  width: 220px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Details */
+.post-details {
+  flex: 1;
+}
+
+.post-details h3 {
+  margin-bottom: 10px;
+}
+
+.post-details h3 a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Info */
+.post-info {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 15px;
+}
+
+.post-info i {
+  margin-right: 5px;
+}
+
+/* Description */
+.post-details p {
+  color: #444;
+  margin-bottom: 10px;
+}
+
+/* Read More */
+.read-more {
+  display: inline-block;
+  color: white;
+  background: #007bff;
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  background: #0056b3;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  gap: 8px;
+}
+
+.pagination a {
+  padding: 8px 12px;
+  background: #fff;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  color: #333;
+  border-radius: 5px;
+}
+
+.pagination a:hover {
+  background: #007bff;
+  color: white;
+}
+
+.pagination .active {
+  background: #007bff;
+  color: white;
+}
+
+.pagination .disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

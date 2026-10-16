@@ -1,0 +1,281 @@
+/* ==========================================================================
+   ADMIN PANELS DATA VIEW TABLES: ARTICLES ARCHIVE LIST INDEX
+   ========================================================================== */
+
+.table-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  gap: 20px;
+}
+
+.table-header-row .admin-heading {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0b132a; /* Premium midnight brand color */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.table-header-row .admin-heading i {
+  color: #e53e3e; /* Theme red icon tint indicator */
+}
+
+.table-subtext {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* --- THE ACCENTED ADD ACTION ENTRY BUTTON --- */
+.add-new-btn {
+  background-color: #e53e3e; /* Primary vibrant highlight theme */
+  color: #ffffff !important;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.add-new-btn:hover {
+  background-color: #c53030;
+  transform: translateY(-2px); /* Premium focal floating pop state */
+  box-shadow: 0 6px 16px rgba(197, 48, 48, 0.3);
+}
+
+.add-new-btn:active {
+  transform: translateY(0);
+}
+
+/* --- DATA GRID STORAGE TERMINAL FRAMEWORK --- */
+.table-card-container {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.01), 0 4px 12px rgba(11, 19, 42, 0.01);
+  overflow-x: auto;
+}
+
+.content-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+/* Header Columns Presentation Layer */
+.content-table th {
+  background-color: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* Dynamic Rows Layout Styling */
+.content-table td {
+  padding: 16px 24px;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.content-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.content-table tbody tr:hover {
+  background-color: #f8fafc; /* Fine track background highlighting grid */
+}
+
+.content-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Width Control Proportions Settings */
+.col-index { width: 80px; }
+.col-main-title { width: 35%; }
+.col-ctrl-center { 
+  width: 140px; 
+  text-align: center;
+}
+
+/* Serial Badge Formatting */
+.index-num-tag {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  background-color: #f1f5f9;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.cell-article-title {
+  font-weight: 600;
+}
+
+.title-preview-link {
+  color: #0b132a;
+}
+
+.title-preview-link:hover {
+  color: #e53e3e;
+  text-decoration: underline;
+}
+
+/* Category Label Tags */
+.category-indicator-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a5568;
+  background-color: #edf2f7;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.cell-date-stamp {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Creators Info Profile Module Components */
+.author-cell-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar-letter {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(11, 19, 42, 0.05);
+  color: #0b132a;
+  font-weight: 700;
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.author-label-text {
+  font-weight: 500;
+  color: #475569;
+}
+
+/* --- CONTROL ACTION CORE BUTTON SWITCHES --- */
+.cell-action-btn {
+  text-align: center;
+  padding: 16px 10px !important;
+}
+
+.action-icon-link {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+/* Edit Interactive Controls Styles */
+.link-edit {
+  color: #3182ce;
+}
+.link-edit:hover {
+  background-color: #3182ce;
+  color: #ffffff;
+  border-color: #3182ce;
+  transform: scale(1.05);
+}
+
+/* Delete Interactive Controls Styles */
+.link-delete {
+  color: #e53e3e;
+}
+.link-delete:hover {
+  background-color: #e53e3e;
+  color: #ffffff;
+  border-color: #e53e3e;
+  transform: scale(1.05);
+}
+
+/* --- PAGINATION CENTERING UNIT ROW --- */
+.admin-pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.pagination {
+  display: flex;
+  gap: 6px;
+}
+
+.page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 12px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  color: #4a5568;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.01);
+  transition: all 0.2s ease;
+}
+
+.page-link:hover:not(.disabled):not(.active) {
+  background-color: #0b132a;
+  border-color: #0b132a;
+  color: #ffffff;
+}
+
+.page-link.active {
+  background-color: #e53e3e;
+  border-color: #e53e3e;
+  color: #ffffff;
+  cursor: default;
+}
+
+.page-link.disabled {
+  color: #cbd5e0;
+  background-color: #f7fafc;
+  border-color: #e2e8f0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* --- SMART MOBILE COMPRESSION RESPONSIVITY SCALING --- */
+@media (max-width: 768px) {
+  .table-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .add-new-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

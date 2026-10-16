@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS GK — Administrative Authentication</title>
+    <!-- Google Fonts for crisp typography -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <!-- Font Awesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Custom CSS Stylesheet Link -->
+    <link rel="stylesheet" href="../css/admin_login.css">
+</head>
+<body class="admin-login-body">
+
+<div id="wrapper-admin" class="body-content">
+    <div class="container">
+        <div class="login-wrapper">
+
+            <!-- THE MODERN AUTHENTICATION CARD -->
+            <main class="login-card">
+
+                <!-- HEADER WITH BRAND MARK -->
+                <header class="card-header">
+                    <div class="brand-logo">
+                        <span class="logo-main">NEWS</span><span class="logo-badge">GK</span>
+                    </div>
+                    <h2>Control Panel Gateway</h2>
+                    <p class="header-subtext">Provide administrative credentials to access your command dashboard tracks.</p>
+                </header>
+
+                <!-- CARD BODY ELEMENTS -->
+                <div class="card-body">
+                    <form action="/admin/index" method="POST" autocomplete="off">
+
+                        <!-- USERNAME INPUT TRACK -->
+                        <div class="form-group">
+                            <input type="text" id="username" name="username" required placeholder=" ">
+                            <label for="username">Username</label>
+                            <span class="focus-line-indicator"></span>
+                        </div>
+
+                        <!-- PASSWORD INPUT TRACK -->
+                        <div class="form-group">
+                            <input type="password" id="password" name="password" required placeholder=" ">
+                            <label for="password">Password</label>
+                            <span class="focus-line-indicator"></span>
+                        </div>
+
+                        <!-- FORGOT ACTION STUB ROW -->
+                        <div class="form-utility-row">
+                            <a href="/admin/forgototp" class="forgot-link-text">Trouble accessing your account?</a>
+                        </div>
+
+                        <!-- SUBMIT BUTTON INTERACTION LINK -->
+                        <button type="submit" class="btn-login">
+                            Secure Log In <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </form>
+                </div>
+
+            </main>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,437 @@
+/* ==========================================================================
+   1. GLOBAL REFINED BLUE-GRAY SYSTEMS
+   ========================================================================== */
+:root {
+  --canvas-bg: #f8fafc;
+  --panel-bg: #ffffff;
+  
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-ghost: #94a3b8;
+  
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --border-muted: #e2e8f0;
+  
+  --radius-normal: 12px;
+  --radius-circle: 50%;
+  --transition-smooth: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --font-clean: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.settings-page {
+  background-color: var(--canvas-bg);
+  font-family: var(--font-clean);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   2. CONTAINER STACKS
+   ========================================================================== */
+.settings-layout {
+  display: flex;
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 24px;
+  gap: 48px;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   3. SIDEBAR WITH CORNER BTN OVERLAY MECHANICS
+   ========================================================================== */
+.settings-profile-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-muted);
+  border-radius: var(--radius-normal);
+  padding: 40px 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.profile-card__avatar-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.profile-card__avatar-wrap {
+  width: 110px;
+  height: 110px;
+  border-radius: var(--radius-circle);
+  overflow: hidden;
+  background-color: #f1f5f9;
+  border: 2px solid var(--border-muted);
+}
+
+.profile-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-card__edit-btn-overlay {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 34px;
+  height: 34px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+  border: 3px solid var(--panel-bg);
+  cursor: pointer;
+  outline: none;
+  transition: background-color var(--transition-smooth), transform var(--transition-smooth);
+}
+
+.profile-card__edit-btn-overlay:hover {
+  background-color: var(--color-primary-hover);
+  transform: scale(1.05);
+}
+
+.profile-card__name {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.3px;
+}
+
+.profile-card__meta {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ==========================================================================
+   4. CONTENT WORKSPACE COMPONENT
+   ========================================================================== */
+.settings-content-area {
+  flex: 1;
+}
+
+.settings-title-block {
+  margin-bottom: 32px;
+}
+
+.settings-title-block__main {
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.settings-title-block__sub {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.action-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.action-row {
+  display: flex;
+  align-items: center;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-muted);
+  border-radius: var(--radius-normal);
+  padding: 22px 24px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.01);
+  transition: border-color var(--transition-smooth), transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.action-row:hover {
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+}
+
+.action-row__icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  background-color: #f1f5f9;
+  color: #64748b;
+  border-radius: 8px;
+  margin-right: 20px;
+  flex-shrink: 0;
+  transition: background-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+.action-row:hover .action-row__icon {
+  background-color: #e0f2fe;
+  color: var(--color-primary);
+}
+
+.action-row__text {
+  flex: 1;
+}
+
+.action-row__heading {
+  font-size: 15.5px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.action-row__desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.action-row__arrow {
+  color: var(--text-ghost);
+  font-size: 13px;
+  padding-left: 16px;
+  transition: transform var(--transition-smooth), color var(--transition-smooth);
+}
+
+.action-row:hover .action-row__arrow {
+  color: var(--text-main);
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   5. POPUP MODAL ARCHITECTURE (.modal-overlay)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.3);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-smooth);
+}
+
+.modal-overlay--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  background-color: var(--panel-bg);
+  border-radius: var(--radius-normal);
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: scale(0.95);
+  transition: transform var(--transition-smooth);
+}
+
+.modal-overlay--visible .modal-card {
+  transform: scale(1);
+}
+
+.modal-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-muted);
+}
+
+.modal-card__title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.modal-card__close-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--text-ghost);
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+}
+
+.modal-card__close-btn:hover {
+  color: var(--text-main);
+}
+
+.modal-card__body {
+  padding: 24px;
+  margin: 0;
+}
+
+/* Drag & Drop Input Formats */
+.dropzone {
+  position: relative;
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 32px 20px;
+  text-align: center;
+  background-color: #f8fafc;
+  cursor: pointer;
+  transition: border-color var(--transition-smooth), background-color var(--transition-smooth);
+}
+
+.dropzone--active {
+  border-color: var(--color-primary);
+  background-color: #eff6ff;
+}
+
+.dropzone__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.dropzone__icon {
+  font-size: 28px;
+  color: var(--text-ghost);
+  margin-bottom: 12px;
+}
+
+.dropzone__text {
+  font-size: 14px;
+  margin: 0 0 4px 0;
+  color: var(--text-muted);
+}
+
+.dropzone__text span {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.dropzone__hint {
+  font-size: 12px;
+  color: var(--text-ghost);
+  margin: 0;
+}
+
+/* Upload Preview Engine Modifiers */
+.dropzone__preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.dropzone__preview--hidden {
+  display: none;
+}
+
+.dropzone__placeholder--hidden {
+  display: none;
+}
+
+.dropzone__preview-img {
+  width: 90px;
+  height: 90px;
+  border-radius: var(--radius-circle);
+  object-fit: cover;
+  border: 2px solid var(--border-muted);
+}
+
+.dropzone__remove-btn {
+  position: relative;
+  z-index: 10;
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.dropzone__remove-btn:hover {
+  text-decoration: underline;
+}
+
+/* Modal Buttons Configuration */
+.modal-card__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.modal-btn {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: background-color var(--transition-smooth);
+}
+
+.modal-btn--primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.modal-btn--primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.modal-btn--secondary {
+  background-color: #f1f5f9;
+  color: var(--text-muted);
+}
+
+.modal-btn--secondary:hover {
+  background-color: #e2e8f0;
+}
+
+/* ==========================================================================
+   6. RESPONSIVE LAYER
+   ========================================================================== */
+@media (max-width: 868px) {
+  .settings-layout {
+    flex-direction: column;
+    margin: 30px auto;
+    gap: 32px;
+    padding: 0 16px;
+  }
+
+  .settings-profile-sidebar {
+    width: 100%;
+  }
+
+  .profile-card {
+    padding: 32px 24px;
+  }
+}

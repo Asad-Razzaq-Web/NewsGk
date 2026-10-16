@@ -1,0 +1,238 @@
+/* ==========================================================================
+   ADMIN PANELS DATA VIEW TABLES: COMMENTS INDEX MODULE
+   ========================================================================== */
+
+.table-header-row {
+  margin-bottom: 28px;
+}
+
+.table-header-row .admin-heading {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0b132a; /* Midnight Blue token matching your theme files */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.table-header-row .admin-heading i {
+  color: #e53e3e; /* Signature layout accent red color */
+}
+
+.table-subtext {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* --- THE DATA TABLE BACKDROP CARD WRAP --- */
+.table-card-container {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.01), 0 4px 12px rgba(11, 19, 42, 0.01);
+  overflow-x: auto; /* Clean horizontal drift mapping protection for tables */
+}
+
+.content-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+/* Headers Treatment */
+.content-table th {
+  background-color: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* Table Cells Formatting */
+.content-table td {
+  padding: 18px 24px;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.content-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.content-table tbody tr:hover {
+  background-color: #f8fafc; /* Subtle striping overlay focus trace */
+}
+
+.content-table tbody tr:last-child td {
+  border-bottom: none; /* Strips final border index from card floor track */
+}
+
+/* Cell Width Column Modifiers */
+.col-wide { width: 35%; }
+.col-actions { width: 180px; }
+
+.cell-bold {
+  font-weight: 600;
+}
+.cell-bold a {
+  color: #0b132a;
+}
+.cell-bold a:hover {
+  color: #e53e3e;
+  text-decoration: underline;
+}
+
+.cell-date {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* User identity initials bubble setup */
+.user-cell-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar-initial {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: rgba(11, 19, 42, 0.05);
+  color: #0b132a;
+  font-weight: 700;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-text-excerpt {
+  color: #475569;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- THE STATE SELECTION DROPDOWNS --- */
+.select-dropdown-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.status-select-premium {
+  width: 100%;
+  padding: 8px 32px 8px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  appearance: none; /* Destroys clunky native design rendering across browsers */
+  transition: all 0.2s ease;
+}
+
+.status-select-premium:focus {
+  border-color: #e53e3e;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+}
+
+.dropdown-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: #64748b;
+  pointer-events: none; /* Let clicks pass directly into underlying form input field */
+}
+
+/* --- STATE INDICATOR STATUS BADGES --- */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+.badge-approved {
+  background-color: rgba(56, 161, 105, 0.08);
+  color: #2f855a;
+}
+
+.badge-pending {
+  background-color: rgba(221, 107, 32, 0.08);
+  color: #c05621;
+}
+
+.badge-rejected {
+  background-color: rgba(229, 62, 62, 0.08);
+  color: #c53030;
+}
+
+/* --- PAGINATION CENTERING WRAPPER LAYER --- */
+.admin-pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.pagination {
+  display: flex;
+  gap: 6px;
+}
+
+.page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 12px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  color: #4a5568;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.01);
+  transition: all 0.2s ease;
+}
+
+.page-link:hover:not(.disabled):not(.active) {
+  background-color: #0b132a;
+  border-color: #0b132a;
+  color: #ffffff;
+}
+
+.page-link.active {
+  background-color: #e53e3e;
+  border-color: #e53e3e;
+  color: #ffffff;
+  cursor: default;
+}
+
+.page-link.disabled {
+  color: #cbd5e0;
+  background-color: #f7fafc;
+  border-color: #e2e8f0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}

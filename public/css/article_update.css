@@ -1,0 +1,317 @@
+/* ==========================================================================
+   ADMIN PANELS CREATION MODULES: ARTICLE CREATION FORM INTERFACE
+   ========================================================================== */
+
+.form-header-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  gap: 20px;
+}
+
+.form-header-top-row .admin-heading {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0b132a; /* Premium midnight identity color */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.form-header-top-row .admin-heading i {
+  color: #e53e3e; /* Accent red icons */
+}
+
+.form-subtext {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* Functional Back Utility Navigation Button Link */
+.back-to-index-btn {
+  background-color: #ffffff;
+  color: #475569 !important;
+  border: 1px solid #e2e8f0;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.01);
+  transition: all 0.2s ease;
+}
+
+.back-to-index-btn:hover {
+  background-color: #f8fafc;
+  color: #0b132a !important;
+  border-color: #cbd5e1;
+}
+
+/* --- THE MASTER CREATION BACKGROUND CARD --- */
+.form-card-container {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.01), 0 4px 12px rgba(11, 19, 42, 0.01);
+  padding: 40px;
+}
+
+.premium-admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px; /* Breathing room separating form rows */
+}
+
+/* --- A. GOOGLE-STYLE FLOATING LABEL SYSTEM --- */
+.form-group-floating {
+  position: relative;
+  width: 100%;
+}
+
+.form-group-floating input {
+  width: 100%;
+  padding: 12px 0;
+  font-family: inherit;
+  font-size: 18px; /* Prominent heading title size tracking */
+  font-weight: 700;
+  color: #0b132a;
+  border: none;
+  border-bottom: 2px solid #e2e8f0;
+  background: transparent;
+  outline: none;
+}
+
+.form-group-floating label {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #94a3b8;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.focus-line-slide {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #e53e3e;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Input floating focal triggers configuration states */
+.form-group-floating input:focus ~ label,
+.form-group-floating input:not(:placeholder-shown) ~ label {
+  top: -14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #e53e3e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group-floating input:focus ~ .focus-line-slide {
+  width: 100%;
+}
+
+/* --- B. STANDARD FORM GROUP CONTAINER ELEMENTS --- */
+.form-group-standard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.static-field-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #475569;
+}
+
+/* Textarea Content Layout Frames */
+.textarea-input-wrap textarea {
+  width: 100%;
+  padding: 16px;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.textarea-input-wrap textarea:focus {
+  background-color: #ffffff;
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.08); /* Soft signature focus halo glow */
+}
+
+/* Dual Column Horizontal Grid Block Rows */
+.form-dual-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+/* Custom Select Dropdowns Frameworks */
+.custom-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.custom-select-wrapper select {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.custom-select-wrapper select:focus {
+  background-color: #ffffff;
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.08);
+}
+
+.custom-select-arrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: #64748b;
+  pointer-events: none;
+}
+
+/* --- C. PREMIUM GRAPHIC UPLOAD ZONE MASK --- */
+.custom-file-upload-zone {
+  width: 100%;
+  border: 2px dashed #cbd5e1;
+  background-color: #f8fafc;
+  padding: 24px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.custom-file-upload-zone:hover {
+  background-color: #ffffff;
+  border-color: #e53e3e;
+}
+
+.upload-zone-inner-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.cloud-upload-icon {
+  font-size: 26px;
+  color: #94a3b8;
+  margin-bottom: 4px;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s ease;
+}
+
+.custom-file-upload-zone:hover .cloud-upload-icon {
+  color: #e53e3e;
+  transform: translateY(-3px); /* Subtle physics floating bounce vector animation */
+}
+
+.main-prompt-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.sub-prompt-text {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* Hide native browser input handle completely */
+.custom-file-upload-zone input[type="file"] {
+  display: none;
+}
+
+/* --- D. SUBMIT TERMINAL EXECUTIVE CONTROL BUTTON --- */
+.form-action-footer-row {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 28px;
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.premium-submit-btn {
+  background-color: #0b132a; /* Executive midnight canvas color */
+  color: #ffffff;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(11, 19, 42, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-submit-btn i {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.premium-submit-btn:hover {
+  background-color: #e53e3e; /* Instantly catches eyes into brand red target accents */
+  box-shadow: 0 6px 20px rgba(229, 62, 62, 0.25);
+  transform: translateY(-2px);
+}
+
+.premium-submit-btn:hover i {
+  transform: translateX(4px) translateY(-2px); /* Snappy jet plane directional micro vector animation */
+}
+
+.premium-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* --- DYNAMIC RESPONSIVENESS ADAPTATION CONTROLS --- */
+@media (max-width: 992px) {
+  .form-dual-fields-grid {
+    grid-template-columns: 1fr; /* Collapses dual column inputs split nicely layout stack on tablet fields */
+    gap: 24px;
+  }
+  .form-card-container {
+    padding: 24px;
+  }
+}

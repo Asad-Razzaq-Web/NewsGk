@@ -1,0 +1,34 @@
+<!-- views/admin/logout.ejs -->
+<div id="logout-modal-overlay" class="modal-overlay-visible" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-card">
+    
+    <!-- Modal Dynamic Icon Head -->
+    <div class="modal-warning-sphere style-logout-badge">
+      <i class="fa-solid fa-arrow-right-from-bracket"></i>
+    </div>
+    
+    <!-- Modal Description Text Content -->
+    <div class="modal-body-content">
+      <h3 id="modal-title">Confirm Secure Logout</h3>
+      <p>
+        Are you absolutely sure you want to log out of the 
+        <strong>News<span class="logo-accent-inline-badge">PK</span></strong> 
+        control panel? Any unsaved administrative changes will be lost.
+      </p>
+    </div>
+    
+    <!-- Action Executor Row Footer Buttons -->
+    <footer class="modal-action-row">
+      <!-- Cancel simply navigates back to dashboard safely -->
+      <a href="/admin/dashboard" class="modal-btn btn-secondary">Cancel</a>
+      
+      <!-- Secure form action mapping to run the POST method logic -->
+      <form action="/admin/logout" method="POST" class="modal-form-inline">
+        <button type="submit" class="modal-btn btn-danger">
+          Logout <i class="fa-solid fa-power-off"></i>
+        </button>
+      </form>
+    </footer>
+
+  </div>
+</div>

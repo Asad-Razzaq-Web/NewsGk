@@ -1,0 +1,80 @@
+<div id="admin-content">
+    <div class="container">
+
+        <!-- Top Action Section Bar Header -->
+        <header class="table-header-row">
+            <div class="title-wrap">
+                <h1 class="admin-heading">
+                    <i class="fa-solid fa-newspaper"></i> All Articles
+                </h1>
+                <p class="table-subtext">Manage, publish, filter, or remove content entries across the system database terminal.</p>
+            </div>
+            
+            <!-- Upgraded High-End Call to Action Add Button -->
+            <a class="add-new-btn" href="add-article">
+                <i class="fa-solid fa-plus"></i> Create New Article
+            </a>
+        </header>
+
+        <!-- PREMIUM ARCHITECTURAL ARCHIVE CONTAINER TABLE -->
+        <div class="table-card-container">
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th class="col-index">S.No.</th>
+                        <th class="col-main-title">Article Title</th>
+                        <th>Category Segment</th>
+                        <th>Date Published</th>
+                        <th>Content Creator</th>
+                        <th class="col-ctrl-center" colspan="2">Controls</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- Row Item Index 1 -->
+                    <tr>
+                        <td class="cell-index"><span class="index-num-tag">01</span></td>
+                        <td class="cell-article-title">
+                            <a href="single" target="_blank" class="title-preview-link">Lorem ipsum dolor sit amet</a>
+                        </td>
+                        <td><span class="category-indicator-badge">Html</span></td>
+                        <td class="cell-date-stamp">01 Nov, 2025</td>
+                        <td>
+                            <div class="author-cell-badge">
+                                <span class="avatar-letter">A</span>
+                                <span class="author-label-text">Admin</span>
+                            </div>
+                        </td>
+                        
+                        <!-- Control Action 1: Edit Modification -->
+                        <td class="cell-action-btn edit-action">
+                            <a href="/admin/update-article" class="action-icon-link link-edit" title="Edit Article Content">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </td>
+
+                        <!-- Control Action 2: Secure Removal -->
+                        <td class="cell-action-btn delete-action">
+                            <a href="delete-article" class="action-icon-link link-delete" title="Purge Article From Index">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Master Pagination Section Row Wrapper -->
+        <div class="admin-pagination-wrapper">
+            <nav class="pagination" aria-label="Articles index navigation track controls">
+                <a class="page-link disabled" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                <a class="page-link" href="#">1</a>
+                <a class="page-link active" href="#" aria-current="page">2</a>
+                <a class="page-link" href="#">3</a>
+                <a class="page-link" href="#">Next</a>
+            </nav>
+        </div>
+
+    </div>
+</div>

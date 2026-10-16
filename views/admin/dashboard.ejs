@@ -1,0 +1,66 @@
+<!-- DYNAMIC ADMIN MANAGEMENT SYSTEM INSIDE MAIN CONTENT BASE -->
+<div id="admin-content">
+  <div class="container">
+
+    <!-- Minimalist Command Top Bar Header Header -->
+    <header class="admin-header-row">
+      <div class="title-wrap">
+        <h1 class="admin-heading">
+          <span class="panel-indicator">Dashboard</span> 
+          <span class="user-greeting">Welcome back, Admin</span>
+        </h1>
+        <p class="panel-sub-text">Overview of your application activities and configuration assets.</p>
+      </div>
+      <div class="current-session-date">
+        <i class="fa-regular fa-clock"></i> Live Status Tracker
+      </div>
+    </header>
+
+    <!-- METRICS MONITORING GRID SYSTEM TRACK -->
+    <div class="admin-dashboard-grid">
+
+      <!-- Metrics Block Unit 1: Articles Counter -->
+      <div class="metric-card article-metric">
+        <div class="metric-card-inner">
+          <div class="metric-text-wrapper">
+            <span class="metric-label">Total Articles</span>
+            <h2 class="metric-count-number">10</h2>
+            <a href="/admin/posts" class="metric-action-link">Manage Content <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="metric-icon-sphere icon-red">
+            <i class="fa-solid fa-newspaper"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics Block Unit 2: Categories Config Track -->
+      <div class="metric-card category-metric">
+        <div class="metric-card-inner">
+          <div class="metric-text-wrapper">
+            <span class="metric-label">Active Categories</span>
+            <h2 class="metric-count-number"><%= categories.length %></h2>
+            <a href="/admin/category" class="metric-action-link">Edit Taxonomy <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="metric-icon-sphere icon-blue">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics Block Unit 3: Account Profiles Management -->
+      <div class="metric-card user-metric">
+        <div class="metric-card-inner">
+          <div class="metric-text-wrapper">
+            <span class="metric-label">Registered Users</span>
+            <h2 class="metric-count-number"><%= users.length %></h2>
+            <a href="/admin/users" class="metric-action-link">View Accounts <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="metric-icon-sphere icon-purple">
+            <i class="fa-solid fa-users-gear"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Verification - OTP</title>
+  
+  <!-- Font Awesome CDN for Interface Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Link to your main styling layout -->
+   <!-- Correct absolute link path format -->
+<link rel="stylesheet" href="/css/enter-otp.css">
+
+
+</head>
+<body class="admin-login-body">
+
+  <div id="wrapper-admin">
+    <div class="container">
+      <div class="login-wrapper">
+        <div class="login-card">
+          
+          <!-- Integrated Brand Logo Element -->
+          <div class="card-header">
+            <div class="brand-logo">
+              <span class="logo-main">NEWS</span><span class="logo-badge">GK</span>
+            </div>
+            <h2>Enter Security Code</h2>
+            <p class="header-subtext">
+              We have dispatched a 6-digit verification code to your email. Please input the security sequence below to verify your identity.
+            </p>
+          </div>
+
+          <!-- Submission Target Form -->
+                   <!-- Submission Target Form -->
+          <form action="/admin/verify-otp" method="POST" id="otpForm">
+            
+            <!-- Hidden field to safely carry the email tracking parameter from the previous step -->
+            <input type="hidden" name="email" value="<%= email %>">
+
+            <!-- Integrated Single Digit Verification Grid -->
+            <div class="otp-grid-container">
+              <input type="text" name="otp[]" class="otp-digit-field" maxlength="1" required autocomplete="off" pattern="[0-9]" inputmode="numeric">
+              <input type="text" name="otp[]" class="otp-digit-field" maxlength="1" required autocomplete="off" pattern="[0-9]" inputmode="numeric">
+              <input type="text" name="otp[]" class="otp-digit-field" maxlength="1" required autocomplete="off" pattern="[0-9]" inputmode="numeric">
+              <input type="text" name="otp[]" class="otp-digit-field" maxlength="1" required autocomplete="off" pattern="[0-9]" inputmode="numeric">
+              <input type="text" name="otp[]" class="otp-digit-field" maxlength="1" required autocomplete="off" pattern="[0-9]" inputmode="numeric">
+              <input type="text" name="otp[]" class="otp-digit-field" maxlength="1" required autocomplete="off" pattern="[0-9]" inputmode="numeric">
+            </div>
+
+            <!-- Action Executor Button -->
+            <button type="submit" class="btn-login">
+              <span>Verify & Authenticate</span>
+              <i class="fas fa-shield-alt" aria-hidden="true"></i>
+            </button>
+
+          </form>
+          
+          <!-- Back to Login Navigation Row -->
+          <div class="back-to-login-row">
+            <!-- Added id and click-blocking logic for state management -->
+            <a href="/admin/forgototp" class="back-link-text back-link-text--disabled" id="resendBtn" onclick="handleResendClick(event)">
+              <i class="fas fa-arrow-left" aria-hidden="true"></i>
+              <span id="resendText">Resend Code (30s)</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auto-Focus Code Sequencing & Timer Handlers -->
+  <script>
+    // --- 1. OTP INPUT GRID LOGIC ---
+    const inputs = document.querySelectorAll('.otp-digit-field');
+    
+    inputs.forEach((input, index) => {
+      input.addEventListener('input', (e) => {
+        if (e.target.value.length === 1 && index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        }
+      });
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && e.target.value.length === 0 && index > 0) {
+          inputs[index - 1].focus();
+        }
+      });
+    });
+
+    // --- 2. 60-SECOND COUNTDOWN TIMER LOGIC ---
+    let timeLeft = 60;
+    const resendBtn = document.getElementById('resendBtn');
+    const resendText = document.getElementById('resendText');
+    let isButtonActive = false;
+
+    const countdown = setInterval(() => {
+      timeLeft--;
+      
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+        isButtonActive = true;
+        resendBtn.classList.remove('back-link-text--disabled');
+        resendText.textContent = 'Resend Verification Request';
+      } else {
+        resendText.textContent = `Resend Code (${timeLeft}s)`;
+      }
+    }, 1000);
+
+    // Prevents page routing redirection if the user clicks while disabled
+    function handleResendClick(event) {
+      if (!isButtonActive) {
+        event.preventDefault();
+        return false;
+      }
+    }
+  </script>
+
+</body>
+</html>

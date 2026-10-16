@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 (Replaced 4.7 for modern icons like X/Twitter and dynamic search glyphs) -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/single.css">
+  <link rel="stylesheet" href="/css/search.css">
+  <link rel="stylesheet" href="/css/partials_sidebare.css">
+</head>
+
+<body>
+
+  <!-- UTILITY TOP BAR -->
+  <div class="utility-bar">
+    <div class="container">
+      <div class="utility-date">Saturday, May 17, 2025</div>
+      <div class="utility-actions">
+        <span class="utility-links">
+          <a href="#">About Us</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy Policy</a>
+        </span>
+        <span class="header-socials">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER CONTAINER -->
+  <header id="header">
+    <div class="container">
+      
+      <!-- LOGO -->
+      <div class="logo-wrapper">
+        <h2>News</h2>
+        <!-- <a href="/">
+          <img src="/images/news.png" alt="NEWS GK logo">
+        </a> -->
+      </div>
+
+      <!-- MAIN NAVIGATION MENU -->
+      <nav id="menu-bar">
+        <ul class="menu">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/category/world">World</a></li>
+          <li><a href="/category/business">Business</a></li>
+          <li><a href="/category/technology">Technology</a></li>
+          <li><a href="/category/sports">Sports</a></li>
+          <li><a href="/category/entertainment">Entertainment</a></li>
+          <li><a href="/category/opinion">Opinion</a></li>
+        </ul>
+      </nav>
+
+      <!-- NAVIGATION ACTIONS -->
+      <div class="header-actions">
+        <a href="#" class="subscribe-btn">
+          <i class="far fa-envelope"></i> Subscribe
+        </a>
+        <button class="search-trigger">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT FRAMEWORK -->
+  <main id="main-content">
+    <div class="container">
+      <div class="content-grid">
+
+        <!-- PAGE CONTENT CONTAINER -->
+        <div class="main-page">
+           <%- body %>
+        </div>
+
+        <!-- SIDEBAR CONTAINER -->
+        <aside class="sidebar">
+            <%- include('partials/sidebar') %>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- COMPREHENSIVE FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        <!-- Column 1: Brand Info -->
+        <div class="footer-column brand-info">
+          <!-- Text logo implementation matching style block -->
+          <h3 class="footer-logo">NEWS <span class="badge">GK</span></h3>
+          <p>Your trusted source for breaking news, in-depth analysis, and the stories that matter most.</p>
+          <div class="footer-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: Categories Links -->
+        <div class="footer-column">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="/">World</a></li>
+            <li><a href="/category/business">Business</a></li>
+            <li><a href="/category/technology">Technology</a></li>
+            <li><a href="/category/sports">Sports</a></li>
+            <li><a href="/category/entertainment">Entertainment</a></li>
+            <li><a href="/category/opinion">Opinion</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Quick Links -->
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Sitemap</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Newsletter Form -->
+        <div class="footer-column newsletter-col">
+          <h4>Newsletter</h4>
+          <p>Get the latest news directly to your inbox.</p>
+          <form class="newsletter-form" action="#" method="POST">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Copyright Row -->
+      <div class="footer-bottom">
+        <p>© 2025 NewsGK. All rights reserved.</p>
+        <p>Made with <i class="fas fa-heart"></i> for readers around the world.</p>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

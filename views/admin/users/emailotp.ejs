@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Verification</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+       <!-- Font Awesome Icons CDN -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <link rel="stylesheet" href="/css/users_emailotp.css">
+</head>
+</head>
+<body>
+
+    <div class="otp-card-container">
+        <div class="otp-card">
+            <!-- Security Header Visual -->
+            <div class="otp-header">
+                <div class="otp-icon-wrap">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h2 class="otp-title">Security Verification</h2>
+                <p class="otp-subtitle">
+                    Enter the 6-digit confirmation code sent to <br>
+                    <span class="otp-email-highlight"><%= email %></span> to authenticate this action.
+                </p>
+            </div>
+
+            <!-- OTP Input Form Matrix - Points to your POST verification route -->
+            <form id="otp-entry-form" action="/admin/users/verify-otp" method="POST" autocomplete="off">
+                <div class="otp-inputs-row">
+                    <input type="text" class="otp-field" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                    <input type="text" class="otp-field" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                    <input type="text" class="otp-field" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                    <input type="text" class="otp-field" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                    <input type="text" class="otp-field" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                    <input type="text" class="otp-field" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                </div>
+
+                <!-- Hidden Input to gather and pass the compiled 6-digit string payload cleanly to req.body -->
+                <input type="hidden" name="otp" id="final-otp-value">
+
+                <!-- Enhanced Dual Row Layout: Permanent Timer + Actionable Resend Button -->
+                <div class="otp-utilities-row">
+                    <div class="otp-countdown-status">
+                        <i class="fa-regular fa-clock"></i> Expires in: <strong id="countdown-timer">00:30</strong>
+                    </div>
+                    <!-- Text updated to accurately show the target action -->
+                    <button type="button" id="otp-resend-btn" class="otp-small-resend-btn" disabled>
+                        <i class="fa-solid fa-arrow-left"></i> Go Back to Form
+                    </button>
+                </div>
+
+                <!-- Submit Action Trigger -->
+                <div class="otp-action-row">
+                    <button type="submit" id="otp-submit-btn" class="otp-submit-btn">
+                        Confirm Passcode <i class="fa-solid fa-key"></i>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const fields = document.querySelectorAll(".otp-field");
+        const form = document.getElementById("otp-entry-form");
+        const hiddenOtpInput = document.getElementById("final-otp-value");
+        const timerDisplay = document.getElementById("countdown-timer");
+        const resendBtn = document.getElementById("otp-resend-btn");
+        const submitBtn = document.getElementById("otp-submit-btn");
+
+        let countdownInterval;
+        const totalDuration = 30; // Set cleanly to 30 seconds to match UI metrics
+
+        // Auto focus the initial entry box
+        if (fields.length > 0) {
+            fields[0].focus();
+        }
+
+        // --- COUNTDOWN TIMER ENGINE ---
+        function startTimer(duration) {
+            clearInterval(countdownInterval);
+            let timeRemaining = duration;
+
+            resendBtn.disabled = true;
+            resendBtn.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Go Back to Form`;
+            submitBtn.disabled = false;
+            fields.forEach(f => {
+                f.removeAttribute("disabled");
+                f.value = "";
+            });
+            if (fields.length > 0) fields[0].focus();
+
+            function updateDisplay() {
+                let minutes = Math.floor(timeRemaining / 60);
+                let seconds = timeRemaining % 60;
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                timerDisplay.textContent = `${minutes}:${seconds}`;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(countdownInterval);
+                    
+                    // Code Expired State
+                    resendBtn.disabled = false;
+                    submitBtn.disabled = true;
+                    fields.forEach(f => {
+                        f.value = "";
+                        f.setAttribute("disabled", "true");
+                    });
+                }
+                timeRemaining--;
+            }
+
+            updateDisplay();
+            countdownInterval = setInterval(updateDisplay, 1000);
+        }
+
+        // Initialize Timer on Page Setup
+        startTimer(totalDuration);
+
+        // Modified Back Button Action context mapping
+        resendBtn.addEventListener("click", () => {
+            // Redirect operator back to form view matrix
+            window.location.href = '/admin/add-user';
+        });
+
+        // Input fields layout behaviors setup
+        fields.forEach((input, index) => {
+            input.addEventListener("input", (e) => {
+                const target = e.target;
+                target.value = target.value.replace(/[^0-9]/g, "");
+
+                if (target.value.length === 1 && index < fields.length - 1) {
+                    fields[index + 1].focus();
+                }
+            });
+
+            input.addEventListener("keydown", (e) => {
+                if (e.key === "Backspace") {
+                    if (!e.target.value && index > 0) {
+                        fields[index - 1].focus();
+                    }
+                } else if (e.key === "ArrowLeft" && index > 0) {
+                    fields[index - 1].focus();
+                } else if (e.key === "ArrowRight" && index < fields.length - 1) {
+                    fields[index + 1].focus();
+                }
+            });
+
+            input.addEventListener("paste", (e) => {
+                e.preventDefault();
+                const pastedData = (e.clipboardData || window.clipboardData).getData("text");
+                const numbersOnly = pastedData.replace(/[^0-9]/g, "").substring(0, 6);
+                
+                if (numbersOnly.length > 0) {
+                    numbersOnly.split("").forEach((char, i) => {
+                        if (fields[i]) {
+                            fields[i].value = char;
+                        }
+                    });
+                    const finalFocusIndex = Math.min(numbersOnly.length, fields.length - 1);
+                    fields[finalFocusIndex].focus();
+                }
+            });
+        });
+
+        // Form Submission Collector Hook
+        form.addEventListener("submit", () => {
+            const finalCode = Array.from(fields).map(field => field.value).join("");
+            hiddenOtpInput.value = finalCode;
+        });
+    });
+    </script>
+</body>
+</html>

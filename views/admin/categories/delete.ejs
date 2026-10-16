@@ -1,0 +1,30 @@
+<!-- PREMIUM ARCHITECTURAL REMOVAL CONFIRMATION OVERLAY MODAL -->
+<div id="delete-modal-overlay" class="modal-overlay-visible" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-card">
+    
+    <!-- Modal Dynamic Icon Head -->
+    <div class="modal-warning-sphere">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+    </div>
+    
+    <!-- Modal Description Text Content -->
+    <div class="modal-body-content">
+      <h3 id="modal-title">Confirm Category Deletion</h3>
+      <p>Are you absolutely sure you want to permanently delete the publishing channel track for <strong><%= category.catName || category.name %></strong>? This action will impact all articles currently linked to it.</p>
+    </div>
+    
+    <!-- Action Executor Row Footer Buttons -->
+    <footer class="modal-action-row">
+      <!-- Cancel simply navigates back to directory safely -->
+      <a href="/admin/category" class="modal-btn btn-secondary" style="text-decoration: none;">Cancel</a>
+      
+      <!-- Secure form action mapping to run the POST method logic -->
+      <form action="/admin/delete-category-confirmed/<%= category._id %>" method="POST" style="display: inline; flex: 1;">
+        <button type="submit" class="modal-btn btn-danger" style="width: 100%;">
+          Delete Category <i class="fa-solid fa-trash-can"></i>
+        </button>
+      </form>
+    </footer>
+
+  </div>
+</div>

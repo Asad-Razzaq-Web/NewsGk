@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN Panel | NewsPK</title>
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+     <!-- Font Awesome 6 (Replaced 4.7 for modern icons like X/Twitter and dynamic search glyphs) -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+
+    <!-- Custom System Layout Sheets -->
+    <link rel="stylesheet" href="/css/admin_layout.css">
+    <link rel="stylesheet" href="/css/admin_dashboard.css">
+    <link rel="stylesheet" href="/css/admin_logout.css">
+    <link rel="stylesheet" href="/css/article_index.css">
+    <link rel="stylesheet" href="/css/category_index.css">
+    <link rel="stylesheet" href="/css/category_delete.css">
+    <link rel="stylesheet" href="/css/category_update.css">
+    <link rel="stylesheet" href="/css/users_index.css">
+    <link rel="stylesheet" href="/css/users_delete.css">
+    <link rel="stylesheet" href="/css/users_create.css">
+    <link rel="stylesheet" href="/css/users_update.css">
+    <link rel="stylesheet" href="/css/comments_index.css">
+    <link rel="stylesheet" href="/css/settings_index.css">
+    <link rel="stylesheet" href="/css/article_create.css">
+    <link rel="stylesheet" href="/css/article_update.css">
+</head>
+<body class="admin-panel-root">
+
+    <!-- ==========================================
+         1. TOP ADMINISTRATIVE IDENTITY HEADER
+         ========================================== -->
+    <header id="admin-main-header">
+        <div class="container header-flex-row">
+            <div class="admin-brand">
+                <a href="/admin/dashboard" class="logo-text">
+                    News<span class="logo-accent-badge">PK</span>
+                </a>
+                <span class="admin-workspace-tag">Control Panel</span>
+            </div>
+            
+            <div class="admin-profile-status">
+                <span class="status-indicator-dot"></span>
+                <span class="session-user">Logged in as <strong>Admin</strong></span>
+                <a href="/admin/logoutpage" class="quick-logout-btn" title="Sign Out Securely">
+                    <i class="fa-solid fa-power-off"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         2. CORE NAVIGATION MENUBAR TRACK
+         ========================================== -->
+ <nav id="news-menubar">
+    <div class="container">
+        <div class="nav-row">
+            <ul class="news-menu">
+                <li><a href="/admin/dashboard"><i class="fa-solid fa-chart-pie"></i> Home</a></li>
+                <li><a href="/admin/article"><i class="fa-solid fa-newspaper"></i> Articles</a></li>
+                <li><a href="/admin/category"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+                <li><a href="/admin/users"><i class="fa-solid fa-users-gear"></i> Users</a></li>
+                <li><a href="/admin/comments"><i class="fa-solid fa-comments"></i> Comments</a></li>
+                <li><a href="/admin/settings"><i class="fa-solid fa-sliders"></i> Settings</a></li>
+            </ul>
+
+            <!-- Modern Minimalist Search Bar Widget -->
+            <div class="search-box">
+                <form action="/search" method="GET" class="menu-search-form">
+                    <input type="text" name="q" placeholder="Search operational database..." required>
+                    <button type="submit" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- ==========================================
+         3. BREAKING NEWS BROADCAST ALIGNMENT ROW
+         ========================================== -->
+    <div class="breaking-news">
+        <div class="container">
+            <div class="breaking-row">
+                <div class="breaking-title">
+                    SYSTEM BROADCAST
+                </div>
+                <div class="breaking-text">
+                    Latest core configuration engine updates: Ensure taxonomy parameters align with publication cycles.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         4. MAIN CONTENT INJECTION NODE CONTAINER
+         ========================================== -->
+    <main id="content">
+        <div class="container content-inner-track">
+            <!-- Dynamic EJS Template Content Body Injected Safely Here -->
+            <%- body %>
+        </div>
+    </main>
+
+    <!-- ==========================================
+         5. COMPREHENSIVE LUXURY DARK FOOTER
+         ========================================== -->
+    <footer class="news-footer">
+        <div class="container footer-container">
+
+            <!-- Column 1: Brand Info & Social Hooks -->
+            <div class="footer-column footer-brand">
+                <h2>News<span class="logo-accent-badge">PK</span></h2>
+                <p>
+                    NewsPK serves as a premium automated information network, providing verified updates on international politics, global financial markets, national breakthroughs, and technological frontiers.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/" target="_blank" aria-label="X Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Internal Command Links -->
+            <div class="footer-column">
+                <h3>Quick Navigation</h3>
+                <ul>
+                    <li><a href="/">Public Portal View</a></li>
+                    <li><a href="/latest-news">Latest Bulletins</a></li>
+                    <li><a href="/breaking-news">Breaking Feeds</a></li>
+                    <li><a href="/about">About Infrastructure</a></li>
+                    <li><a href="/contact">Support Center</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Category Segments -->
+            <div class="footer-column">
+                <h3>Taxonomy Tracks</h3>
+                <ul>
+                    <li><a href="/pakistan">Pakistan National</a></li>
+                    <li><a href="/world">International Affairs</a></li>
+                    <li><a href="/politics">Political Landscape</a></li>
+                    <li><a href="/business">Macro Economics</a></li>
+                    <li><a href="/sports">Athletics Coverage</a></li>
+                    <li><a href="/technology">Silicon & Computing</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Newsletter Box -->
+            <div class="footer-column newsletter">
+                <h3>Stay Synchronized</h3>
+                <p>Subscribe to secure the primary operational media briefings straight to your console.</p>
+                <form class="footer-sub-form" action="#" method="POST">
+                    <input type="email" placeholder="Enter administrative email..." required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Base Intellectual Property Attribution Row -->
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p>&copy; 2026 <strong>NewsPK</strong>. Administrative System Terminal. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="/privacy-policy">Privacy Charter</a>
+                    <a href="/terms">Terms of Agreement</a>
+                    <a href="/disclaimer">Legal Notices</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Get current URL pathname path (e.g., "/admin/article" or "/admin/add-article")
+    const currentPath = window.location.pathname;
+    
+    // Target all links inside the news-menu track
+    const menuLinks = document.querySelectorAll(".news-menu li a");
+
+    menuLinks.forEach(link => {
+        const linkPath = link.getAttribute("href");
+
+        // Highlights if exact path matches, or if it matches an admin subroute (like /admin/article/create)
+        if (currentPath === linkPath || (linkPath !== "/admin/dashboard" && currentPath.startsWith(linkPath))) {
+            link.parentElement.classList.add("active");
+        }
+    });
+});
+</script>
+
+
+
+</body>
+</html>

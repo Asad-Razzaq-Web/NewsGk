@@ -1,0 +1,143 @@
+/* ==========================================================================
+   ADMIN PANELS SECURITY MODULE: SYSTEM RECORD DELETION CONFIRMATION OVERLAY
+   ========================================================================== */
+
+/* Full-screen frosted backdrop blur state overlay container */
+#delete-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(11, 19, 42, 0.45); /* Deep midnight translucent shadow theme tint */
+  backdrop-filter: blur(5px); /* Premium high-end architectural desktop filter glass blur effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Higher layer index to sit absolutely on top of navigation bars */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Visibility Control Utility Parameter State Hooks */
+.modal-overlay-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* --- THE MODAL FLOATING POP CARD COMPONENT --- */
+.modal-card {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 14px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 20px 48px rgba(11, 19, 42, 0.25);
+  transform: scale(0.92); /* Starting coordinates template scale for motion triggers */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Elastic snappy bounce animation curve */
+}
+
+/* Scale target box back smoothly up when parent visibility state hook releases */
+#delete-modal-overlay:not(.modal-overlay-hidden) .modal-card {
+  transform: scale(1);
+}
+
+/* Warning Graphic Shield Sphere Badge */
+.modal-warning-sphere {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(229, 62, 62, 0.08);
+  color: #e53e3e; /* Theme custom signature warning brand red alert token */
+  font-size: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  animation: warningPulse 2s infinite ease-in-out;
+}
+
+@keyframes warningPulse {
+  0% { box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(229, 62, 62, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(229, 62, 62, 0); }
+}
+
+.modal-body-content h3 {
+  font-size: 19px;
+  font-weight: 800;
+  color: #0b132a;
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+
+.modal-body-content p {
+  font-size: 14px;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.modal-body-content strong {
+  color: #0b132a;
+  font-weight: 700;
+  background-color: #edf2f7;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* --- ACTION FOOTER BUTTON UTILITIES ROWS --- */
+.modal-action-row {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-btn {
+  flex: 1;
+  padding: 12px 18px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+/* Visible state override configuration when rendering out the dedicated view page */
+.modal-overlay-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+
+/* Cancel Safe Button Parameters Styles */
+.btn-secondary {
+  background-color: #edf2f7;
+  color: #4a5568;
+}
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+  color: #0b132a;
+}
+
+/* Confirm Destruction Delete Action Buttons Styles */
+.btn-danger {
+  background-color: #e53e3e;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.2);
+}
+.btn-danger:hover {
+  background-color: #c53030;
+  box-shadow: 0 6px 16px rgba(197, 48, 48, 0.3);
+  transform: translateY(-1px);
+}
+.btn-danger:active {
+  transform: translateY(0);
+}

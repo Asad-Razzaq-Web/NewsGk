@@ -1,0 +1,269 @@
+<div class="article-editor-scope">
+  <!-- Clean Breadcrumb & Title Section -->
+  <header class="editor-header">
+    <div class="breadcrumb">Dashboard / Articles / Create</div>
+    <h1><i class="fas fa-plus-circle"></i> Add New Article</h1>
+  </header>
+
+  <form action="" method="POST" enctype="multipart/form-data" class="article-form" id="articleForm">
+    <!-- Hidden input to safely transmit contenteditable data to your backend -->
+    <input type="hidden" name="content" id="hiddenContent">
+
+    <!-- Main Content Panel (Left) & Settings Panel (Right) -->
+    <div class="form-grid-layout">
+      
+      <!-- Primary Inputs (Left Column) -->
+      <div class="main-form-content">
+        
+        <!-- Title Input -->
+        <div class="field-card">
+          <label for="title"><i class="fas fa-heading"></i> Article Title</label>
+          <input type="text" id="title" name="title" placeholder="Type a catchy headline..." required autocomplete="off">
+        </div>
+
+        <!-- Rich Text Editor Panel -->
+        <div class="field-card">
+          <label><i class="fas fa-file-alt"></i> Content Body</label>
+          <div class="rich-text-editor">
+            
+            <!-- Upgraded Advanced Toolbar with Font Awesome Layout Integration -->
+            <div class="editor-toolbar">
+              <!-- History Actions -->
+              <div class="toolbar-group">
+                <button type="button" class="tool-btn" data-command="undo" title="Undo"><i class="fas fa-undo"></i></button>
+                <button type="button" class="tool-btn" data-command="redo" title="Redo"><i class="fas fa-redo"></i></button>
+              </div>
+
+              <!-- Font Style & Size Dropdowns -->
+              <div class="toolbar-group">
+                <select aria-label="Font Style" class="tool-select font-picker-select" data-command="fontName">
+                  <option value="Arial" selected>Arial</option>
+                  <option value="Georgia">Georgia</option>
+                  <option value="Impact">Impact</option>
+                  <option value="Tahoma">Tahoma</option>
+                  <option value="Times New Roman">Times New Roman</option>
+                  <option value="Courier New">Courier</option>
+                </select>
+                
+                <select aria-label="Font Size" class="tool-select size-picker-select" data-command="fontSize">
+                  <option value="1">Small</option>
+                  <option value="3" selected>Normal</option>
+                  <option value="5">Large</option>
+                  <option value="7">Heading</option>
+                </select>
+              </div>
+
+              <!-- Basic Text Inline Formatting -->
+              <div class="toolbar-group">
+                <button type="button" class="tool-btn format-btn font-bold" data-command="bold"><i class="fas fa-bold"></i></button>
+                <button type="button" class="tool-btn format-btn font-italic" data-command="italic"><i class="fas fa-italic"></i></button>
+                <button type="button" class="tool-btn format-btn font-underline" data-command="underline"><i class="fas fa-underline"></i></button>
+                <button type="button" class="tool-btn format-btn font-strike" data-command="strikeThrough"><i class="fas fa-strikethrough"></i></button>
+              </div>
+
+              <!-- Advanced Rich Color Pickers (Perfect Centering Grid Applied) -->
+              <div class="toolbar-group color-pickers-container">
+                <label class="color-tool-label" title="Text Color">
+                  <i class="fas fa-font"></i>
+                  <input type="color" data-command="foreColor" value="#1e293b">
+                </label>
+                <label class="color-tool-label bg-color-label" title="Highlight Background Color">
+                  <i class="fas fa-highlighter"></i>
+                  <input type="color" data-command="hiliteColor" value="#ffffff">
+                </label>
+              </div>
+
+              <!-- Alignment & Layout Vectors -->
+              <div class="toolbar-group">
+                <button type="button" class="tool-btn" data-command="justifyLeft" title="Align Left"><i class="fas fa-align-left"></i></button>
+                <button type="button" class="tool-btn" data-command="justifyCenter" title="Align Center"><i class="fas fa-align-center"></i></button>
+                <button type="button" class="tool-btn" data-command="insertUnorderedList" title="Bullet List"><i class="fas fa-list-ul"></i></button>
+                <button type="button" class="tool-btn" data-command="insertOrderedList" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+              </div>
+
+              <!-- Asset Embed Features -->
+              <div class="toolbar-group">
+                <button type="button" class="tool-btn" id="createLinkBtn" title="Insert Link"><i class="fas fa-link"></i></button>
+                <button type="button" class="tool-btn" id="insertImageBtn" title="Insert Inline Image URL"><i class="fas fa-image"></i></button>
+              </div>
+            </div>
+            
+            <!-- Dynamic ContentEditable Canvas -->
+            <div id="editorCanvas" class="editor-canvas" contenteditable="true" spellcheck="true" placeholder="Start writing your thoughts here..."></div>
+            
+            <!-- Sleek Live Footer Counter -->
+            <div class="editor-footer">
+              <span class="stat-badge"><b id="wordCount">0</b> words</span>
+              <span class="stat-badge"><b id="charCount">0</b> characters</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article Configuration Sidebar (Right Column) -->
+      <aside class="sidebar-form-content">
+        
+        <!-- Category Card -->
+        <div class="field-card">
+          <label for="category"><i class="fas fa-folder"></i> Category</label>
+          <div class="select-wrapper">
+            <select id="category" name="category" required>
+              <option value="" selected disabled>Choose a category</option>
+              <option value="tech">Technology</option>
+              <option value="lifestyle">Lifestyle</option>
+              <option value="finance">Finance</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Featured Image Card with Modern Visual Dropzone & Live Preview Container -->
+        <div class="field-card">
+          <label><i class="fas fa-camera"></i> Cover Media</label>
+          <div class="file-input-wrapper" id="dropzoneContainer">
+            <div class="upload-ui-elements" id="uploadUiElements">
+              <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+              <span class="upload-title">Choose image file</span>
+              <span class="upload-subtitle">PNG, JPG or WEBP up to 5MB</span>
+            </div>
+            <!-- Dynamic Preview element container hidden initially -->
+            <div class="preview-image-holder" id="previewImageHolder">
+              <img src="" alt="Thumbnail preview" id="liveFilePreview">
+              <button type="button" class="remove-preview-btn" id="removePreviewBtn"><i class="fas fa-times"></i> Change Image</button>
+            </div>
+            <input type="file" id="article_image" name="image" accept="image/*" required>
+          </div>
+        </div>
+
+        <!-- Action Module -->
+        <div class="action-card">
+          <button type="submit" name="submit" class="btn btn-save"><i class="fas fa-paper-plane"></i> Publish Article</button>
+          <div class="secondary-actions">
+            <button type="button" class="btn btn-preview"><i class="fas fa-eye"></i> Preview</button>
+            <button type="reset" class="btn btn-reset"><i class="fas fa-undo-alt"></i> Reset</button>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </form>
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById("editorCanvas");
+  const hiddenInput = document.getElementById("hiddenContent");
+  const form = document.getElementById("articleForm");
+  const wordCountSpan = document.getElementById("wordCount");
+  const charCountSpan = document.getElementById("charCount");
+  
+  // File upload wrapper elements
+  const fileInput = document.getElementById("article_image");
+  const uploadUiElements = document.getElementById("uploadUiElements");
+  const previewImageHolder = document.getElementById("previewImageHolder");
+  const liveFilePreview = document.getElementById("liveFilePreview");
+  const removePreviewBtn = document.getElementById("removePreviewBtn");
+
+  // 1. Text Formatter Toolbar Action Linker (Buttons click commands)
+  document.querySelectorAll(".editor-toolbar .tool-btn[data-command]").forEach(button => {
+    button.addEventListener("click", () => {
+      const command = button.getAttribute("data-command");
+      document.execCommand(command, false, null);
+      canvas.focus();
+    });
+  });
+
+  // 2. Select Component Dropdown Listeners (Font Family Name & Sizing)
+  document.querySelectorAll(".editor-toolbar .tool-select").forEach(select => {
+    select.addEventListener("change", () => {
+      const command = select.getAttribute("data-command");
+      const value = select.value;
+      document.execCommand(command, false, value);
+      canvas.focus();
+    });
+  });
+
+  // 3. Inline Complex Colors Input Processing Handlers
+  document.querySelectorAll(".color-pickers-container input[type='color']").forEach(colorPicker => {
+    colorPicker.addEventListener("input", () => {
+      const command = colorPicker.getAttribute("data-command");
+      const value = colorPicker.value;
+      document.execCommand(command, false, value);
+      canvas.focus();
+    });
+  });
+
+  // 4. Interactive Assets Link and Media URL Dialog Injection Handles
+  document.getElementById("createLinkBtn").addEventListener("click", () => {
+    const url = prompt("Enter complete destination URL (e.g., https://google.com):");
+    if (url) {
+      document.execCommand("createLink", false, url);
+      canvas.focus();
+    }
+  });
+
+  document.getElementById("insertImageBtn").addEventListener("click", () => {
+    const imageUrl = prompt("Enter web destination link for your inline image asset:");
+    if (imageUrl) {
+      document.execCommand("insertImage", false, imageUrl);
+      canvas.focus();
+    }
+  });
+
+  // 5. Dynamic Live File Dropzone File Reader Preview Logic
+  fileInput.addEventListener("change", function() {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        liveFilePreview.setAttribute('src', e.target.result);
+        uploadUiElements.style.display = 'none';
+        previewImageHolder.style.display = 'block';
+      }
+      reader.readAsDataURL(file);
+    }
+  });
+
+  // 6. Action event to clear the active image selection preview state
+  removePreviewBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // Avoid event triggering click bubbles to wrapper input field
+    fileInput.value = "";
+    liveFilePreview.setAttribute('src', '');
+    previewImageHolder.style.display = 'none';
+    uploadUiElements.style.display = 'flex';
+  });
+
+  // 7. Live Text Content Metrics Word/Char Analytics Counter
+  canvas.addEventListener("input", () => {
+    const textContent = canvas.innerText.trim();
+    charCountSpan.textContent = textContent.length;
+    
+    const words = textContent.split(/\s+/).filter(word => word.length > 0);
+    wordCountSpan.textContent = words.length;
+  });
+
+  // 8. Submit Data Interception Sync Engine
+  form.addEventListener("submit", (e) => {
+    hiddenInput.value = canvas.innerHTML;
+    if (canvas.innerText.trim() === "") {
+      e.preventDefault();
+      alert("Please write some content inside the article body canvas.");
+    }
+  });
+
+  // 9. Master Form Content Canvas Reset Event Handler
+  form.addEventListener("reset", () => {
+    setTimeout(() => {
+      canvas.innerHTML = "";
+      wordCountSpan.textContent = "0";
+      charCountSpan.textContent = "0";
+      // Reset file attachment components
+      liveFilePreview.setAttribute('src', '');
+      previewImageHolder.style.display = 'none';
+      uploadUiElements.style.display = 'flex';
+    }, 10);
+  });
+});
+
+</script>

@@ -1,0 +1,85 @@
+<div id="admin-content">
+  <div class="container">
+
+    <!-- Minimalist Navigation Action Header -->
+    <header class="form-header-top-row">
+      <div class="title-wrap">
+        <h1 class="admin-heading">
+          <i class="fa-solid fa-circle-plus"></i> Add New Article
+        </h1>
+        <p class="form-subtext">Draft and deploy a new publication article asset into the public reader network nodes.</p>
+      </div>
+      <a href="/admin/article" class="back-to-index-btn"><i class="fa-solid fa-arrow-left"></i> Back to Articles</a>
+    </header>
+
+    <!-- PREMIUM CREATION TERMINAL CONTAINER CARD -->
+    <div class="form-card-container">
+      <div class="form-body">
+
+        <form action="" method="POST" enctype="multipart/form-data" class="premium-admin-form">
+
+          <!-- TITLE FIELD (Floating Label System) -->
+          <div class="form-group-floating">
+            <input type="text" name="title" id="article_title" autocomplete="off" required placeholder=" ">
+            <label for="article_title">Article Title</label>
+            <span class="focus-line-slide"></span>
+          </div>
+
+          <!-- DESCRIPTION TEXTAREA LAYER -->
+          <div class="form-group-standard">
+            <label class="static-field-label" for="summernote">Article Body Description</label>
+            <div class="textarea-input-wrap">
+              <!-- Keeps compatibility intact with your Summernote rich text editor plugin -->
+              <textarea name="content" id="summernote" rows="8" required placeholder="Compose your news story content here..."></textarea>
+            </div>
+          </div>
+
+          <!-- DUAL INPUT GRID BLOCK ROW -->
+          <div class="form-dual-fields-grid">
+            
+            <!-- CATEGORY CONFIG SELECTOR -->
+            <div class="form-group-standard">
+              <label class="static-field-label" for="article_category">Taxonomy Category</label>
+              <div class="custom-select-wrapper">
+                <select name="category" id="article_category" required>
+                  <option value="" disabled selected>Select Target Category Segment</option>
+                  <option value="pakistan">Pakistan</option>
+                  <option value="world">World</option>
+                  <option value="politics">Politics</option>
+                  <option value="business">Business</option>
+                  <option value="sports">Sports</option>
+                  <option value="technology">Technology</option>
+                </select>
+                <i class="fa-solid fa-chevron-down custom-select-arrow"></i>
+              </div>
+            </div>
+
+            <!-- CUSTOM PREMIUM FILE UPLOAD DRAG-AND-DROP DRIVER -->
+            <div class="form-group-standard">
+              <label class="static-field-label">Feature Cover Graphic</label>
+              <label for="article_image" class="custom-file-upload-zone">
+                <div class="upload-zone-inner-prompt">
+                  <i class="fa-solid fa-cloud-arrow-up cloud-upload-icon"></i>
+                  <span class="main-prompt-text">Click to choose image file</span>
+                  <span class="sub-prompt-text">Supports JPG, PNG or WEBP formats</span>
+                </div>
+                <input type="file" name="image" id="article_image" required accept="image/*">
+              </label>
+            </div>
+
+          </div>
+
+          <!-- SUBMIT ACTION FORM TRIGGER ROW -->
+          <div class="form-action-footer-row">
+            <button type="submit" name="submit" class="premium-submit-btn">
+              Publish Article <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>

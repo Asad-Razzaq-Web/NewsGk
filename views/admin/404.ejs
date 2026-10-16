@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Displaced</title>
+    <!-- Font Awesome Integration -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="error-wrapper">
+        <div class="glitch-box" id="interactiveBrand">
+            <h1 class="error-code">404</h1>
+            <div class="floating-icon">
+                <i class="fa-solid fa-compass-drafting"></i>
+            </div>
+        </div>
+
+        <h2 class="error-title">Reality Error</h2>
+        <p class="error-desc">
+            The endpoint you mapped does not exist in this database cluster. It may have expired or mutated into another directory path.
+        </p>
+
+        <div class="action-container">
+            <button onclick="window.history.back()" class="btn btn-secondary">
+                <i class="fa-solid fa-angle-left"></i> Go Back
+            </button>
+            <a href="/admin/dashboard" class="btn btn-primary">
+                <i class="fa-solid fa-server"></i> Return Home
+            </a>
+        </div>
+    </div>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --primary-glow: #4f46e5;
+            --secondary-glow: #06b6d4;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #particleCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .ambient-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, rgba(0,0,0,0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            animation: pulseGlow 8s ease-in-out infinite alternate;
+        }
+
+        .error-wrapper {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2.5rem;
+            max-width: 600px;
+            backdrop-filter: blur(8px);
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        .glitch-box {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+        }
+
+        .error-code {
+            font-size: clamp(6rem, 16vw, 10rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            user-select: none;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glitch-box:hover .error-code {
+            transform: scale(1.08) rotate(-2deg);
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 2.5rem;
+            color: var(--secondary-glow);
+            top: -10px;
+            right: -20px;
+            text-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+            animation: iconOrbit 4s linear infinite;
+        }
+
+        .error-title {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .error-desc {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+
+        .action-container {
+            display: flex;
+            gap: 1.25rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.85rem 1.75rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 12px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-glow), #3b82f6);
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 24px rgba(79, 70, 229, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulseGlow {
+            0% { width: 450px; height: 450px; opacity: 0.8; }
+            100% { width: 550px; height: 550px; opacity: 1; }
+        }
+
+        @keyframes iconOrbit {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(180deg); }
+            100% { transform: translateY(0px) rotate(360deg); }
+        }
+    </style>
+    <script>
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let particlesArray = [];
+        const numberOfParticles = 65;
+        
+        const mouse = {
+            x: null,
+            y: null,
+            radius: 130
+        }
+
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2.5 + 0.5;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.density = (Math.random() * 30) + 10;
+                this.alpha = Math.random() * 0.5 + 0.2;
+                this.color = Math.random() > 0.5 ? '79, 70, 229' : '6, 182, 212';
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(${this.color}, ${this.alpha})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            update() {
+                if (mouse.x !== null && mouse.y !== null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < mouse.radius) {
+                        let forceDirectionX = dx / distance;
+                        let forceDirectionY = dy / distance;
+                        let maxDistance = mouse.radius;
+                        let force = (maxDistance - distance) / maxDistance;
+                        let directionX = forceDirectionX * force * this.density;
+                        let directionY = forceDirectionY * force * this.density;
+                        
+                        this.x -= directionX;
+                        this.y -= directionY;
+                    }
+                }
+
+                if (this.x !== this.baseX) {
+                    let dx = this.x - this.baseX;
+                    this.x -= dx / 15;
+                }
+                if (this.y !== this.baseY) {
+                    let dy = this.y - this.baseY;
+                    this.y -= dy / 15;
+                }
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        const brandBox = document.getElementById('interactiveBrand');
+        brandBox.addEventListener('click', () => {
+            particlesArray.forEach(p => {
+                p.x = Math.random() * canvas.width;
+                p.y = Math.random() * canvas.height;
+            });
+        });
+    </script>
+</body>
+</html>

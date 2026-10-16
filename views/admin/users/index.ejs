@@ -1,0 +1,107 @@
+<div id="admin-content">
+    <div class="container">
+
+        <!-- Top Action Section Header Row -->
+        <header class="top-section">
+            <h1 class="admin-heading">
+                <i class="fa-solid fa-users-gear"></i> All Users
+            </h1>
+
+            <a class="add-new" href="/admin/add-user">
+                <i class="fa-solid fa-plus"></i> Add User
+            </a>
+        </header>
+
+        <!-- PREMIUM ARCHITECTURAL USER TERMINAL TABLE -->
+        <div class="table-container">
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th style="width: 80px;">S.No.</th>
+                        <th>Full Name</th>
+                        <th>User Name</th>
+                        <th>Email Address</th>
+                        <th>Role</th>
+                        <th style="text-align: center; width: 70px;">Edit</th>
+                        <th style="text-align: center; width: 70px;">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach((user, index)=>{ %>
+                        <tr>
+                            <!-- CONTINUOUS SEQUENTIAL INDEX BADGING FIX -->
+                            <td>
+                                <span class="id"><%= ((page - 1) * limit) + index + 1 %></span>
+                            </td>
+                            
+                            <!-- Clean Full Name Text Block -->
+                            <td>
+                                <%= user.fullname %>
+                            </td>
+                            
+                            <!-- Username Node -->
+                            <td>
+                                <span class="user-name-badge"><%= user.username %></span>
+                            </td>
+
+                            <!-- Email Node Mapping -->
+                            <td>
+                                <%= user.email %>
+                            </td>
+                            
+                            <!-- Clearance Role Pilled Badge Selector -->
+                            <td>
+                                <span class="user-role-badge" style="text-transform: capitalize; font-weight: 600;">
+                                    <%= user.role %>
+                                </span>
+                            </td>
+                            
+                            <!-- Control Action 1: Modify Profile Data -->
+                            <td class="edit">
+                                <a href="/admin/update-user/<%= user._id %>" title="Update Operator Data">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </a>
+                            </td>
+                            
+                            <!-- Control Action 2: Secure Deletion Popup Hook -->
+                            <td class="delete">
+                                <a href="/admin/delete-user/<%= user._id %>" class="link-delete" data-username="<%= user.username %>" title="Purge Operator Account">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Dynamic Accessible Pagination Mechanism -->
+        <nav class="pagination" aria-label="User directory index navigation tracks">
+            
+                <!-- Dynamic Previous Button -->
+                <% if (page > 1) { %>
+                    <a class="page-link" href="/admin/users?page=<%= page - 1 %>">Previous</a>
+                <% } else { %>
+                    <span class="page-link disabled" aria-disabled="true">Previous</span>
+                <% } %>
+
+                <!-- Dynamic Page Numbers -->
+                <% for (let i = 1; i <= totalPages; i++) { %>
+                    <% if (i === page) { %>
+                        <span class="page-link active" aria-current="page"><%= i %></span>
+                    <% } else { %>
+                        <a class="page-link" href="/admin/users?page=<%= i %>"><%= i %></a>
+                    <% } %>
+                <% } %>
+
+                <!-- Dynamic Next Button -->
+                <% if (page < totalPages) { %>
+                    <a class="page-link" href="/admin/users?page=<%= page + 1 %>">Next</a>
+                <% } else { %>
+                    <span class="page-link disabled" aria-disabled="true">Next</span>
+                <% } %>
+            
+        </nav>
+
+    </div>
+</div>

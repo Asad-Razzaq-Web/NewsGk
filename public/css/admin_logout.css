@@ -1,0 +1,137 @@
+/* public/css/logout_modal.css */
+
+/* ==========================================
+   FIXED TRANSPARENT BACKDROP MODAL LAYOUT
+   ========================================== */
+.modal-overlay-visible {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  
+  /* Semi-transparent dark overlay layer to dim your existing page layout */
+  background-color: rgba(15, 23, 42, 0.45) !important; 
+  
+  /* Modern frosted-glass effect that shows the workspace faded out underneath */
+  backdrop-filter: blur(8px) !important; 
+  -webkit-backdrop-filter: blur(8px) !important;
+  
+  z-index: 999999; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.modal-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 90%;
+  max-width: 440px;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: smoothPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-warning-sphere {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+  font-size: 1.75rem;
+}
+
+/* Crimson Accent Theme for Logout Badge */
+.style-logout-badge {
+  background-color: #fef2f2;
+  color: #ef4444;
+  box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.12);
+}
+
+.modal-body-content h3 {
+  color: #0f172a;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.5px;
+}
+
+.modal-body-content p {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2.25rem;
+}
+
+.logo-accent-inline-badge {
+  background-color: #ef4444; 
+  color: #ffffff; 
+  padding: 2px 6px; 
+  border-radius: 4px; 
+  margin-left: 2px; 
+  font-size: 0.85em;
+}
+
+.modal-action-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background-color: #f1f5f9;
+  color: #475569;
+  flex: 1;
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.modal-form-inline {
+  display: inline; 
+  flex: 1; 
+  margin: 0;
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+  width: 100%;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.25);
+  transform: translateY(-1px);
+}
+
+@keyframes smoothPop {
+  from { opacity: 0; transform: scale(0.94) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}

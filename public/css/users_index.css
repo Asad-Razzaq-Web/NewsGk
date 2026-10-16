@@ -1,0 +1,264 @@
+/* ==========================================================================
+   ADMIN PANELS DATA VIEW TABLES: USER DIRECTORY ARCHIVE INDEX
+   ========================================================================== */
+
+/* --- GLOBAL RESET EXTENSIONS & CANVAS --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f6f9;
+  color: #1a202c;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+/* --- TOP SECTION ACTION BAR HEADER --- */
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  gap: 20px;
+}
+
+.admin-heading {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0b132a; /* Premium midnight brand color */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Accent element colorization matching category layout guidelines */
+.admin-heading i {
+  color: #e53e3e; 
+}
+
+/* --- THE ACCENTED ADD ACTION ENTRY BUTTON --- */
+.add-new {
+  text-decoration: none;
+  background-color: #e53e3e; /* Primary vibrant highlight theme */
+  color: #ffffff !important;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.add-new:hover {
+  background-color: #c53030;
+  transform: translateY(-2px); /* Modern floating lift state */
+  box-shadow: 0 6px 16px rgba(197, 48, 48, 0.3);
+}
+
+.add-new:active {
+  transform: translateY(0);
+}
+
+/* --- PREMIUM TABLE CONTAINER CARD BACKDROP --- */
+.table-container {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.01), 0 4px 12px rgba(11, 19, 42, 0.01);
+  overflow-x: auto;
+}
+
+.content-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+/* Header Columns Presentation Layer */
+.content-table th {
+  background-color: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* Dynamic Rows Layout Styling */
+.content-table td {
+  padding: 16px 24px;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.content-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.content-table tbody tr:hover {
+  background-color: #f8fafc; /* Subtle row hover striping */
+}
+
+.content-table tbody tr:last-child td {
+  border-bottom: none; /* Strips final border index from card floor track */
+}
+
+/* Proportional Column Formatting Targets */
+.content-table td.id {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  background-color: #f1f5f9;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 12px; /* Aligns visually within cell tracking blocks */
+}
+
+/* User Profile Badge Alignment Elements - 2nd Column (Full Name) */
+.content-table td:nth-child(2) {
+  font-weight: 700;
+  color: #0b132a;
+}
+
+/* Username and Clearance Badges Alignment Elements - 3rd Column (Username) & 5th Column (Role) */
+.content-table td:nth-child(3), 
+.content-table td:nth-child(5) {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+/* Professional Email Styling Rules - 4th Column (Email Address) */
+.content-table td:nth-child(4) {
+  font-size: 13.5px;
+  color: #64748b; /* Clean muted tech-slate look */
+  font-family: inherit;
+}
+
+/* Formats user roles or tags into custom clean pills matching category designs */
+.user-role-badge, .user-name-badge {
+  background-color: rgba(11, 19, 42, 0.04);
+  padding: 5px 12px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.content-table td.edit, 
+.content-table td.delete {
+  text-align: center;
+  width: 70px;
+}
+
+/* --- CONTROL ACTION BUTTON ICONS --- */
+.edit a, .delete a {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+/* Edit Interactive Modifiers */
+.edit a {
+  color: #3182ce;
+}
+.edit a:hover {
+  background-color: #3182ce;
+  color: #ffffff;
+  border-color: #3182ce;
+  transform: scale(1.05);
+}
+
+/* Delete Interactive Modifiers */
+.delete a {
+  color: #e53e3e;
+}
+.delete a:hover {
+  background-color: #e53e3e;
+  color: #ffffff;
+  border-color: #e53e3e;
+  transform: scale(1.05);
+}
+
+/* --- ACCESSIBLE STYLISH PAGINATION ROW --- */
+.pagination {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 12px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  color: #4a5568;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.01);
+  transition: all 0.2s ease;
+}
+
+.page-link:hover {
+  background-color: #0b132a;
+  border-color: #0b132a;
+  color: #ffffff;
+}
+
+.page-link.active {
+  background-color: #e53e3e;
+  border-color: #e53e3e;
+  color: #ffffff;
+  cursor: default;
+}
+
+.page-link.disabled {
+  color: #cbd5e0;
+  background-color: #f7fafc;
+  border-color: #e2e8f0;
+  cursor: not-allowed;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* --- RESPONSIVE MEDIA BREAKPOINTS --- */
+@media (max-width: 768px) {
+  .top-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .add-new {
+    width: 100%;
+    justify-content: center;
+  }
+}
